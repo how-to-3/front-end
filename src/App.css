@@ -1,1 +1,112 @@
+/* NAVIGATION START */
+.nav-item-container {
+  margin: 0 0 0 1%;
+  font-family: 'Oswald';
+  font-size: 1.25rem;
+}
+.nav-item-item:hover {
+  background-color: lightgray;
+  color: #343A40;
+}
+.nav-container{
+  color: white;
+  background-color: white;
+}
+/* NAVIGATION END */
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* MEDIA QUERIES START */
+@media screen and (min-width: 400px){
+  .nav-item-container{
+    margin: 0 0 0 2%;
+  }
+}
+  @media screen and (min-width: 500px){
+    .nav-item-container{
+      margin: 0 0 0 2%;
+    }
+  }
+  @media screen and (min-width: 600px){
+    .nav-item-container{
+    }
+  }
+  @media screen and (min-width: 650px){
+    .nav-item-container{
+    }
+  }
+  @media screen and (min-width: 700px){
+    .nav-item-container{
+    }
+  }
+  @media screen and (min-width: 800px){
+      .nav-item-container{
+        margin: 0 0 0 1.25%;
+    }
+  }
+  @media screen and (min-width: 900px){
+    
+  }
+  @media screen and (min-width: 1000px){
+    .nav-item-container{
+      margin: 0 0 0 1%;
+    }
+  }
+  @media screen and (min-width: 1100px){
+    .nav-item-container{
+    }
+  }
+  @media screen and (min-width: 1200px){
+    .nav-item-container{
+    }
+  }
+  @media screen and (min-width: 1300px){
+    .nav-item-container{
+    }
+  }
+  @media screen and (min-width: 1400px){
+    .nav-item-container{
+    }
+  }
+  @media screen and (min-width: 1500px){
+    .nav-item-container{
+      margin: 0 0 0 .5%;
+    }
+  }
+  @media screen and (min-width: 1600px){
+    .nav-item-container{
+      margin: 0 0 0 .5%;
+    }
+  }
+  @media screen and (min-width: 1700px){
+    .nav-item-container{
+    }
+  }
+  @media screen and (min-width: 1800px){
+    .nav-item-container{
+    }
+  }
+  @media screen and (min-width: 1900px){
+    .nav-item-container{
+    }
+  }
+  @media screen and (min-width: 2000px){
+    .nav-item-container{
+      margin: 0 0 0 .5%;
+    }
+  }
+/* MEDIA QUERIES END */ 

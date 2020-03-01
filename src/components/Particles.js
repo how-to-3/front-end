@@ -15,9 +15,7 @@ const particleOpt = {
 
 const ParticlesAnimation = () => {
     return (
-        <div>
-            <Particles params={particleOpt} />
-        </div>
+            <Particles params={particleOpt}/>
 )}
 
 export default ParticlesAnimation;
