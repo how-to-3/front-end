@@ -17,25 +17,29 @@ import UpdatePost from './components/UpdatePost';
 
 
 // LAYOUY FOR ROUTES EXAMPLE
-{
-  /* <Switch>
-      <Route path={} component={}/>
-      <Route path={} component={}/>
-      <Route path={} component={}/>
-    </Switch> 
-  */}
 
 
 function App() {
   return (
     <div className="main-container" style={{}}>
       <Navigation />
-        <div className="body-container" style={{backgroundColor:"#3e444a"}}>
-          
+        <div className="body-container" style={{width:"100%", height:"100%", position: "absolute", backgroundColor:"#3e444a"}}>
+        
         {/* SWITCH + ROUTES HERE */}
 
+        {
+          /* <Switch>
+              <Route path={} component={}/>
+              <Route path={} component={}/>
+              <Route path={} component={}/>
+            </Switch> 
+        */
+        }
+
+        {/* PARTICLES ANIMATION BELOW */}
         <Particles/>
         </div>
+          <h1>test</h1>
     </div>
   );
 }
