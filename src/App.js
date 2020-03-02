@@ -14,7 +14,8 @@ import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import Register from './components/Register';
 import UpdatePost from './components/UpdatePost';
-
+import LoginColapse from './components/LoginColapse';
+import RegisterColapse from './components/RegisterColapse';
 
 // LAYOUY FOR ROUTES EXAMPLE
 
@@ -23,6 +24,9 @@ function App() {
   return (
     <div className="main-container" style={{}}>
       <Navigation />
+      
+      <LoginColapse />
+      <RegisterColapse />
         <div className="body-container" style={{width:"100%", height:"100%", position: "absolute", backgroundColor:"#3e444a"}}>
         
         {/* SWITCH + ROUTES HERE */}
