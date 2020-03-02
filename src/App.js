@@ -24,10 +24,11 @@ function App() {
   return (
     <div className="main-container" style={{}}>
       <Navigation />
-      
+
       <LoginColapse />
       <RegisterColapse />
-        <div className="body-container" style={{width:"100%", height:"100%", position: "absolute", backgroundColor:"#3e444a"}}>
+      
+        <Particles/>
         
         {/* SWITCH + ROUTES HERE */}
 
@@ -41,9 +42,6 @@ function App() {
         }
 
         {/* PARTICLES ANIMATION BELOW */}
-        <Particles/>
-        </div>
-          <h1>test</h1>
     </div>
   );
 }

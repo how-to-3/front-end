@@ -15,7 +15,9 @@ const particleOpt = {
 
 const ParticlesAnimation = () => {
     return (
+        <div className="body-container" style={{width:"100%", height:"100%", display:"absolute", backgroundColor:"#3e444a"}}>
             <Particles params={particleOpt}/>
+        </div>
 )}
 
 export default ParticlesAnimation;
