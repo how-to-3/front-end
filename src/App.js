@@ -19,18 +19,17 @@ import Feed from './components/Feed';
 
 function App() {
   return (
-    <div className="main-container" style={{}}>
-  
+    <div className="main-container" style={{padding:"0 0 20% 0", backgroundColor:"#3e444a"}}>
       <Navigation />
       
         {/* SWITCH + ROUTES HERE */}
 
-       <Switch>
+      <Switch>
               <Route exact path="/" component={Feed}/>
               <Route path="/login" component={Login}/>
               <Route path="/dashboard" component={Dashboard}/>
-       </Switch> 
-       <Particles />
+      </Switch> 
+      <Particles />
 
         {/* PARTICLES ANIMATION BELOW */}
     </div>
