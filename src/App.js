@@ -9,7 +9,6 @@ import './App.css';
 // COMPONENTS 
 import Navigation from './components/Navigation';
 import Particles from './components/Particles';
-import CreatorForm from './components/CreatorForm';
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import UpdatePost from './components/UpdatePost';
@@ -21,20 +20,17 @@ import Feed from './components/Feed';
 function App() {
   return (
     <div className="main-container" style={{}}>
+  
       <Navigation />
-      
-      <Login />
       
         {/* SWITCH + ROUTES HERE */}
 
-        {
-          /* <Switch>
-              <Route path="/" component={Feed}/>
-              <Route path={} component={}/>
-              <Route path={} component={}/>
-            </Switch> 
-        */
-        }
+       <Switch>
+              <Route exact path="/" component={Feed}/>
+              <Route path="/login" component={Login}/>
+              <Route path="/dashboard" component={Dashboard}/>
+       </Switch> 
+       <Particles />
 
         {/* PARTICLES ANIMATION BELOW */}
     </div>
