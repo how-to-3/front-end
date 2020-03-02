@@ -29,17 +29,17 @@ const Navigation = (props) => {
                     <div className="nav-item-container">
                         <a href="/login" onClick={!collapsed}>
                             <NavItem className="nav-item-item">
-                                <Link to="/" style={{color: "white",}}>Log In</Link>
-                            </NavItem>
-                        </a>
-                        <a href="/register" onClick={!collapsed}> 
-                            <NavItem className="nav-item-item">
-                                <Link to="/register" style={{color: "white",}}>Sign Up</Link>
+                                <Link to="/" style={{color: "white",}}>Log In / Sign Up</Link>
                             </NavItem>
                         </a>
                         <a href="/dashboard" onClick={!collapsed}>
                             <NavItem className="nav-item-item">
                                 <Link to="/dashboard" style={{color: "white",}}>Dashboard</Link>
+                            </NavItem>
+                        </a>
+                        <a href="/profile" onClick={!collapsed}>
+                            <NavItem className="nav-item-item">
+                                <Link to="/profile" style={{color: "white",}}>My Profile</Link>
                             </NavItem>
                         </a>
                         <a href="/marketing-ui" onClick={!collapsed}>
