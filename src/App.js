@@ -9,37 +9,27 @@ import './App.css';
 // COMPONENTS 
 import Navigation from './components/Navigation';
 import Particles from './components/Particles';
-import CreatorForm from './components/CreatorForm';
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
-import Register from './components/Register';
 import UpdatePost from './components/UpdatePost';
-import LoginColapse from './components/LoginColapse';
-import RegisterColapse from './components/RegisterColapse';
+import Feed from './components/Feed';
 
 // LAYOUY FOR ROUTES EXAMPLE
 
 
 function App() {
   return (
-    <div className="main-container" style={{}}>
+    <div className="main-container" style={{padding:"0 0 20% 0", backgroundColor:"#3e444a"}}>
       <Navigation />
-
-      <LoginColapse />
-      <RegisterColapse />
       
-        <Particles/>
-        
         {/* SWITCH + ROUTES HERE */}
 
-        {
-          /* <Switch>
-              <Route path={} component={}/>
-              <Route path={} component={}/>
-              <Route path={} component={}/>
-            </Switch> 
-        */
-        }
+      <Switch>
+              <Route exact path="/" component={Feed}/>
+              <Route path="/login" component={Login}/>
+              <Route path="/dashboard" component={Dashboard}/>
+      </Switch> 
+      <Particles />
 
         {/* PARTICLES ANIMATION BELOW */}
     </div>
