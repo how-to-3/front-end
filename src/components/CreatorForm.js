@@ -42,7 +42,7 @@ const CreatorForm = props => {
 //     e.preventDefault();
 //     props.setCreator([Creator])
 // }
-const [isOpen, setIsOpen] = useState(true);
+const [isOpen, setIsOpen] = useState(false);
 const toggle = () => setIsOpen(!isOpen);
 
 
