@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import pic6v3 from '../assets/pic6v3.PNG'
 import Styled from 'styled-components';
 
+
 const StyledAnchor = Styled.a`
 &:hover{
     cursor: pointer;
@@ -29,17 +30,12 @@ const Navigation = (props) => {
                     <div className="nav-item-container">
                         <a href="/login" onClick={!collapsed}>
                             <NavItem className="nav-item-item">
-                                <Link to="/" style={{color: "white",}}>Log In / Sign Up</Link>
+                                <Link to="/login" style={{color: "white",}}>Log In / Sign Up</Link>
                             </NavItem>
                         </a>
                         <a href="/dashboard" onClick={!collapsed}>
                             <NavItem className="nav-item-item">
                                 <Link to="/dashboard" style={{color: "white",}}>Dashboard</Link>
-                            </NavItem>
-                        </a>
-                        <a href="/profile" onClick={!collapsed}>
-                            <NavItem className="nav-item-item">
-                                <Link to="/profile" style={{color: "white",}}>My Profile</Link>
                             </NavItem>
                         </a>
                         <a href="/marketing-ui" onClick={!collapsed}>

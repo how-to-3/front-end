@@ -19,10 +19,15 @@
 // )}
 
 import React from 'react';
+import LoginColapse from './LoginColapse';
+import RegisterColapse from './RegisterColapse';
 
 const Login = () => {
     return (
-        <div>Login Page</div>
+        <div>
+            <LoginColapse />
+            <RegisterColapse />
+        </div>
     )
 }
 

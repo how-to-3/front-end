@@ -23,10 +23,16 @@
 // })
 
 import React from 'react';
+import CreatorForm from './CreatorForm';
+import Feed from './Feed';
 
 const Dashboard = () => {
     return (
-        <div>Dashboard</div>
+     <div>    
+      <CreatorForm />
+      <Feed /> 
+      </div>
+
     )
 }
 
