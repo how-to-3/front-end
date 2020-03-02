@@ -20,7 +20,7 @@ import Feed from './components/Feed';
 
 function App() {
   return (
-    <div className="main-container" style={{}}>
+    <div className="main-container" style={{padding:"0 0 20% 0", backgroundColor:"#3e444a"}}>
       <Navigation />
       
       <Login />
@@ -28,11 +28,11 @@ function App() {
         {/* SWITCH + ROUTES HERE */}
 
         {
-          /* <Switch>
-              <Route path="/" component={Feed}/>
-              <Route path={} component={}/>
-              <Route path={} component={}/>
-            </Switch> 
+        /* <Switch>
+            <Route path="/" component={Feed}/>
+            <Route path={} component={}/>
+            <Route path={} component={}/>
+          </Switch> 
         */
         }
 
