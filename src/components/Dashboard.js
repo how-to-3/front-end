@@ -28,11 +28,11 @@ import Feed from './Feed';
 
 const Dashboard = () => {
     return (
-     <div>    
-      <CreatorForm />
-      <Feed /> 
-      </div>
-
+        <div>
+            
+            <CreatorForm />
+            <Feed /> 
+        </div>
     )
 }
 

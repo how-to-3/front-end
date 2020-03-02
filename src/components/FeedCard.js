@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const FeedCard = () => {
         return (
                 <div>Feed Card</div>
