@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import pic6v3 from '../assets/pic6v3.PNG'
 import Styled from 'styled-components';
 
+
 const StyledAnchor = Styled.a`
 &:hover{
     cursor: pointer;

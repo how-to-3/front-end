@@ -12,10 +12,8 @@ import Particles from './components/Particles';
 import CreatorForm from './components/CreatorForm';
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
-import Register from './components/Register';
 import UpdatePost from './components/UpdatePost';
-import LoginColapse from './components/LoginColapse';
-import RegisterColapse from './components/RegisterColapse';
+import Feed from './components/Feed';
 
 // LAYOUY FOR ROUTES EXAMPLE
 
@@ -24,17 +22,14 @@ function App() {
   return (
     <div className="main-container" style={{}}>
       <Navigation />
-
-      <LoginColapse />
-      <RegisterColapse />
       
-        <Particles/>
-        
+      <Login />
+      
         {/* SWITCH + ROUTES HERE */}
 
         {
           /* <Switch>
-              <Route path={} component={}/>
+              <Route path="/" component={Feed}/>
               <Route path={} component={}/>
               <Route path={} component={}/>
             </Switch> 
