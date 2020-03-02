@@ -13,7 +13,6 @@ import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import UpdatePost from './components/UpdatePost';
 import Feed from './components/Feed';
-import RegisterColapse from './components/RegisterColapse';
 
 // LAYOUY FOR ROUTES EXAMPLE
 
@@ -24,8 +23,6 @@ function App() {
   
       <Navigation />
       
-
-      
         {/* SWITCH + ROUTES HERE */}
 
        <Switch>
@@ -34,6 +31,7 @@ function App() {
               <Route path="/dashboard" component={Dashboard}/>
        </Switch> 
        <Particles />
+
         {/* PARTICLES ANIMATION BELOW */}
     </div>
   );
