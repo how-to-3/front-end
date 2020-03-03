@@ -1,7 +1,29 @@
 import React, { useState } from 'react';
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
+import axiosWithAuth from './axiosWithAuth';
 
 const LoginColapse = (props) => {
+
+    const[userCredentials, setUserCredentials] = useState({username:'', password:''})
+
+    const handleChange = e => {
+        setUserCredentials({
+            ...userCredentials,
+            [e.target.name]: e.target.value
+            })
+    }
+    const onSubmit = e => {
+        e.preventDefault();
+        axiosWithAuth()
+        .post('/login', userCredentials)
+        .then( res => {
+            console.log("my response from login :", res)
+            localStorage.setItem('token', res.data.token)
+            props.history.push('/dashboard')
+        })
+        .catch(err => {console.log("error with login post :", err)})
+    }
+
     const [isOpen, setIsOpen] = useState(true);
 
     const toggle = () => setIsOpen(!isOpen);
@@ -17,16 +39,24 @@ const LoginColapse = (props) => {
                 <div style={{}}>
                     <CardBody color="dark">
                         <div style={{margin:"0 20% 0 20%"}}>
-                <form style={{display:"flex", flexDirection:"column"}}>
+                <form onSubmit={onSubmit} style={{display:"flex", flexDirection:"column"}}>
                     <label style={{color:"White",}}>Username</label>
                     <input
-                    
+                    name="username"
+                    type="text"
+                    onChange={handleChange}
+                    style={{margin:"0 0 5% 0"}}
+                    value={userCredentials.username}
                     />
                     <label style={{color:"White",}}>Password</label>
                     <input
-                    
+                    name="password"
+                    type="password"
+                    onChange={handleChange}
+                    style={{margin:"0 0 5% 0"}}
+                    value={userCredentials.password} 
                     />
-                    <button style={{margin:"10% 0 0 0", borderRadius:"5px", width:"100%",}}>Sign In</button>
+                    <button type="submit" style={{margin:"10% 0 0 0", borderRadius:"5px", width:"100%",}}>Sign In</button>
                 </form>
                 </div>
                     </CardBody>
