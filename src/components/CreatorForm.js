@@ -47,28 +47,28 @@ const toggle = () => setIsOpen(!isOpen);
 
 
         return (
-            <div className="colapse-container" style={{width:"100%", height:"100%"}}>
-            <div style={{ padding:"2% 30% 0 30%", display:"flex", flexDirection:"column", justifyContent:"center", backgroundColor:"#3e444a"}}>
+                <div className="colapse-container" style={{width:"100%", height:"100%"}}>
+                <div style={{ padding:"2% 30% 0 30%", display:"flex", flexDirection:"column", justifyContent:"center", backgroundColor:"#3e444a"}}>
         <h2 style={{display:"flex", justifyContent:"center", margin: "0 0 5% 1%", color:"white"}}>Create a How-to!</h2>
-        <Button color="dark" onClick={toggle} style={{ marginBottom: '1rem' }}>add a how-to </Button>
+        <Button color="dark" onClick={toggle} style={{ marginBottom: '1rem' }}>Add A How-To </Button>
         <Collapse isOpen={isOpen}>
-            <div style={{}}>
-            <Card color="dark">
-            <div style={{}}>
+                <div style={{}}>
+                <Card color="dark">
+                <div style={{}}>
                 <CardBody color="dark">
-                    <div style={{margin:"0 20% 0 20%"}}>
-            <form style={{display:"flex", flexDirection:"column"}}>
+                        <div style={{margin:"0 20% 0 20%"}}>
+                <form style={{display:"flex", flexDirection:"column"}}>
                 <label style={{color:"White",}}>Title</label>
                 <input
-              
+                style={{margin:"0 0 5% 0"}}
                 />
                 <label style={{color:"White",}}>Description </label>
                 <input
-                
+                style={{margin:"0 0 5% 0"}}
                 />
                     <label style={{color:"White",}}>Author Name</label>
                 <input
-                
+                style={{margin:"0 0 5% 0"}}
                 />
                 <button style={{margin:"10% 0 0 0", borderRadius:"5px", width:"100%",}}>Publish!</button>
             </form>
