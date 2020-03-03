@@ -1,26 +1,35 @@
-import React from 'react'
-
+import React, { useEffect, useState } from 'react'
+import axiosWithAuth from './axiosWithAuth';
+import axios from 'axios';
+import FeedItem from './FeedItem';
 
 const Feed = () => {
-    console.log(testData)
+
+	const [guides, setGuides] = useState([{id:"", guide_name:""}])
+
+    useEffect(() => {
+        axios
+        .get("https://how-to-3.herokuapp.com/api/guides")
+        .then(res => {
+			console.log("my response :", res.data)
+			setGuides(res.data)
+		})
+        .catch( error => {console.log("error getting guides :", error)})
+    },[])
+	
     return (
-        <div >
+		<>
+		{console.log("my guides: ", guides)}
             <div className="feed-header-container" style={{color:"white", display: "flex", flexDirection:"column", alignItems: "center", margin: "2% 2% 1% 2%"}}>
             <h1>How-To Feed</h1>
             </div>
-                {testData.map(elem => {
-                    return (
-                        <div style={{margin:"0 25% 0 25%", justifyItems:"center", border:"5px solid white", display:"flex", flexDirection:"column", color:"white"}}>
-                            <h2>Name: {elem.title}</h2>
-                            <h4>Description: {elem.description}</h4>
-                            <h5>Creator: {elem.creator}</h5>
-                            <h6>Difficulty: {elem.difficulty}</h6>
-                        </div>
-                    )
-                })
-                }
-            
-        </div>
+			{
+			guides.length > 0 ? 
+			<FeedItem guides={guides} /> 
+			: 
+			<div>Loading...</div>
+			}
+		</>
     )
 }
 

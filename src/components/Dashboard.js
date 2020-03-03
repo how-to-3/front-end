@@ -22,7 +22,9 @@
 //     </div>
 // })
 
-import React from 'react';
+import { Switch, Route } from 'react-router-dom'
+
+import React, { useState, useEffect } from 'react';
 import CreatorForm from './CreatorForm';
 import axios from 'axios';
 
@@ -30,12 +32,13 @@ import axios from 'axios';
 
 const Dashboard = props => {
     const [howTos, setHowTos] = useState([])
+   
     useEffect(() => {
       const getHowTos = () => {
         axios
-          .get('https://how-to-3.herokuapp.com/api/movies')
+          .get('https://how-to-3.herokuapp.com/api/guides')
           .then(response => {
-            setMovies(response.data);
+            setHowTos(response.data);
           })
           .catch(error => {
             console.error('Server Error', error);
