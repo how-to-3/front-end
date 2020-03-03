@@ -42,6 +42,12 @@ const CreatorForm = props => {
 //     e.preventDefault();
 //     props.setCreator([Creator])
 // }
+
+
+// IF USER MAKES A POST -> MAKE USER A CREATOR
+// IF NO POSTS -> USER === USER
+
+
 const [isOpen, setIsOpen] = useState(false);
 const toggle = () => setIsOpen(!isOpen);
 
@@ -83,4 +89,4 @@ const toggle = () => setIsOpen(!isOpen);
         )
 }
 
-export default CreatorForm; 
+export default CreatorForm;
