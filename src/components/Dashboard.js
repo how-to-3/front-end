@@ -24,16 +24,38 @@
 
 import React from 'react';
 import CreatorForm from './CreatorForm';
-import Feed from './Feed';
+import axios from 'axios';
 
-const Dashboard = () => {
+
+
+const Dashboard = props => {
+    const [howTos, setHowTos] = useState([])
+    useEffect(() => {
+      const getHowTos = () => {
+        axios
+          .get('https://how-to-3.herokuapp.com/api/movies')
+          .then(response => {
+            setMovies(response.data);
+          })
+          .catch(error => {
+            console.error('Server Error', error);
+          });
+      }
+      
+      getHowTos();
+    }, []);
+    
+
+
     return (
-        <div>
-            
-            <CreatorForm />
-            <Feed /> 
-        </div>
+     <div className="howTo-list">
+      {howTos.map(howTo => (
+        <HowToDetails key={howTo.id} howTo={howTo} />
+      ))}
+    </div>
     )
 }
+
+
 
 export default Dashboard

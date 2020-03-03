@@ -1,50 +1,5 @@
 import React from 'react'
 
-const testData = [
-	{
-		id: 0,
-		title: 'The Godfather',
-		description: 'Francis Ford Coppola',
-		creator: 'Marlon Brando',
-	    difficulty: 10,
-	},
-	{
-		id: 1,
-		title: 'Star Wars',
-		description: 'George Lucas',
-		creator: 'Mark Hamill',
-	    difficulty: 9.2,
-	},
-	{
-		id: 2,
-		title: 'The Lord of the Rings: The Fellowship of the Ring',
-		description: 'Peter Jackson',
-		creator: 'Elijah Wood',
-	    difficulty: 9.2,
-	},
-	{
-		id: 3,
-		title: 'Terminator 2: Judgement Day',
-		description: 'James Cameron',
-		creator: 'Arnold Schwarzenegger',
-	    difficulty: 9.4,
-	},
-	{
-		id: 4,
-		title: 'Dumb and Dumber',
-		description: 'The Farely Brothers',
-		creator: 'Jim Carrey',
-	    difficulty: 7.6,
-	},
-	{
-		id: 5,
-		title: 'Tombstone',
-		description: 'George P. Cosmatos',
-		creator: 'Kurt Russell',
-	    difficulty: 8.9,
-	},
-];
-
 
 const Feed = () => {
     console.log(testData)
