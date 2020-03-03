@@ -22,17 +22,44 @@
 //     </div>
 // })
 
-import React from 'react';
+import { Switch, Route } from 'react-router-dom'
+
+import React, { useState, useEffect } from 'react';
 import CreatorForm from './CreatorForm';
-import Feed from './Feed';
+import UpdatePost from './UpdatePost';
+import axios from 'axios';
+
+
 
 const Dashboard = () => {
+
+
+
+
+    
     return (
-        <div>
+        // <h1>Display items they'v saved + items they'v created</h1>
+        // Let them edit the cards to change the info 
+        // <div>
+        //     <div className="card-container">
+        //         {data.map(elem => {
+        //             return (
+        //                 <div className="card">
+        //                     {/* cards */}
+        //                     <h1>Name</h1>
+        //                     <h3>Description</h3>
+        //                     <button className="edit-button">Edit</button>
+        //                 </div>
+        //             )
+        //         })}
+                
+                
+            // </div>
             
-            <CreatorForm />
-            <Feed /> 
-        </div>
+            <h1>dashboard</h1>
+            
+        //     <CreatorForm />
+        // </div>
     )
 }
 

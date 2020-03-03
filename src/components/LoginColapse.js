@@ -15,11 +15,11 @@ const LoginColapse = (props) => {
     const onSubmit = e => {
         e.preventDefault();
         axiosWithAuth()
-        .post('/login', userCredentials)
+        .post('/auth/login', userCredentials)
         .then( res => {
             console.log("my response from login :", res)
             localStorage.setItem('token', res.data.token)
-            props.history.push('/dashboard')
+            // props.history.push('/dashboard')
         })
         .catch(err => {console.log("error with login post :", err)})
     }
