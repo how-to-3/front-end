@@ -1,51 +1,7 @@
-// CREATE HOW-TO FORM FOR CREATING NEW HOW-TO'S
-// WHEN FORM SUBMITS -> REDIRECT TO UPDATED /DASHBOARD
-
-/* <FORM>
-        <LABEL>*What is the to how-to thing?*</LABEL>
-        <INPUT 
-        />
-
-        <LABEL>*How do i do the how-to thing?*</LABEL>
-        <INPUT 
-        />
-
-        <LABEL>*Further explanation:*</LABEL>
-        <INPUT 
-        />
-
-        <LABEL>*Who wrote the how-to thing?*</LABEL>
-        <INPUT 
-        />
-
-        <BUTTON>SUBMIT NEW HOW-TO!</BUTTON>
-</FORM> */
-// setting State for Creator Card     
-// const [Creator, setCreator] = useState({
-//         howToTitle: "",
-//         howToDescription: "",
-//         howToAuthor: "",
-// })
-
-// //onChange handler
-// const handleChanges = e => {
-//     setCreator({...Creator,[e.target.name]: e.target.value})
-// }
-
-// //handleSubmit 
-// const handleSubmit = e => {
-//     e.preventDefault();
-//     props.setCreator([Creator])
-// }
-
-
-// IF USER MAKES A POST -> MAKE USER A CREATOR
-// IF NO POSTS -> USER === USER
-
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import axiosWithAuth from './axiosWithAuth';
+import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 
 
@@ -58,23 +14,25 @@ const [newHowTo, setNewHowTo] = useState({
         score:""
 })
 
+const { register, handleSubmit, errors } = useForm()
+
 const handleChanges = e => {
         setNewHowTo({...newHowTo,[e.target.name]: e.target.value})
 }
 
 const history = useHistory()
 
-const handleSubmit = e => {
+const onSubmit = e => {
         setNewHowTo([newHowTo])
         console.log("new how-to submitted :", newHowTo)
         axiosWithAuth()
         .post(`/guides`, newHowTo)
         .then( res => {
-                console.log(res)
+                console.log("guide posted successfully :",res)
+                history.push('/dashboard')
         })
         .catch(err => {console.log("error adding new how-to", err)})
 }
-
 
 const [isOpen, setIsOpen] = useState(false);
 const toggle = () => setIsOpen(!isOpen);
@@ -91,7 +49,7 @@ const toggle = () => setIsOpen(!isOpen);
                 <div style={{}}>
                 <CardBody color="dark">
                         <div style={{margin:"0 20% 0 20%"}}>
-                <form onSubmit={handleSubmit} style={{display:"flex", flexDirection:"column"}}>
+                <form onSubmit={handleSubmit(onSubmit)} style={{display:"flex", flexDirection:"column"}}>
                 <label style={{color:"White",}}>Guide Name:</label>
                 <input
                 name="guide_name"
