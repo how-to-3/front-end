@@ -1,30 +1,28 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 
-
-
-
-
-const HowToDetails = (  {howTo} ) => {
-   // const [howTo, setHowTo] = useState({guide_name: "", category: "", description: "", score: "", id: ""})
-    const { guide_name, category, description, score, id  } = howTo; 
-    console.log("individual card",howTo)
+const HowToDetails = (props) => {
+console.log("props for how to detail", props)
     return (
-      <Link to = {`/Guides/${id}`}>
-      <div className="howTo-card">
-        <h2> name: {guide_name}</h2>
-        <div className="category">
-          category: <em>{category}</em>
+        <div>
+            <div style={{ border:"2px solid white", margin:"1% 25% 0 25%"}}>
+                <Link to = {`/guides/${props.howTo.id}`}>
+                <div className="howTo-card" style={{color:"white", textDecoration:"none"}}>
+                <h2 style={{margin:"2% 0 0% 0", display:"flex", justifyContent:"center"}}>{props.howTo.guide_name}</h2>
+                <div className="category" style={{margin:".5% 0 2% 0", display:"flex", flexDirection:"column", alignItems:"center"}}>
+                    <em>{props.howTo.category}</em>
+                </div>
+                <div className="howTo-description" style={{margin:"0 2% 0 2%"}}>
+                    <p><span style={{fontWeight:"bold"}}>Description:</span> {props.howTo.description}</p>
+                </div>
+                <div className="score" style={{margin:"0 2% 0 2%"}}>
+                    <p><span style={{fontWeight:"bold"}}>Level of Difficulty: </span>{props.howTo.score}</p>
+                </div>
+            </div>
+            </Link>
+            </div>
         </div>
-        <div className="howTo-description">
-          description: <strong>{description}</strong>
-        </div>
-        <div className="score">
-          score: <strong>{score}</strong>
-        </div>
-      </div>
-      </Link>
-    );
-   }
+    )
+}
 
-  export default HowToDetails
+export default HowToDetails;
