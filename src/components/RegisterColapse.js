@@ -3,6 +3,8 @@ import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import Styled from 'styled-components';
 import axiosWithAuth from './axiosWithAuth';
 import { useForm } from "react-hook-form";
+import { useHistory } from 'react-router-dom';
+
 const StyledButton = Styled.button`
 &:hover{
     cursor: pointer;
@@ -16,7 +18,7 @@ const RegisterColapse = (props) => {
 
     const { register, handleSubmit, errors } = useForm()
     
-    
+    const history = useHistory()
     
     const [signup, setSignup] = useState({username: "", password: ""})
 
@@ -25,9 +27,8 @@ const RegisterColapse = (props) => {
             .post("/auth/register", signup)
             .then(res => {
                 console.log("my response from register :", res);
-                // localStorage.setItem("token", res.data.user.token);
-                // localStorage.setItem("user", JSON.stringify(res.data.user));
-                // props.history.push("/dashboard");
+                localStorage.setItem("token", res.data.token);
+                history.push("/dashboard");
             })
             .catch(err => {console.log("error with register post :", err)});
     }

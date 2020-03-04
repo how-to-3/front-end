@@ -20,11 +20,6 @@
 
         <BUTTON>SUBMIT NEW HOW-TO!</BUTTON>
 </FORM> */
-
-import React, { useState } from 'react';
-import { Collapse, Button, CardBody, Card } from 'reactstrap';
-
-const CreatorForm = props => {
 // setting State for Creator Card     
 // const [Creator, setCreator] = useState({
 //         howToTitle: "",
@@ -48,14 +43,19 @@ const CreatorForm = props => {
 // IF NO POSTS -> USER === USER
 
 
+import React, { useState } from 'react';
+import { Collapse, Button, CardBody, Card } from 'reactstrap';
+
+const CreatorForm = props => {
+
 const [isOpen, setIsOpen] = useState(false);
 const toggle = () => setIsOpen(!isOpen);
 
 
         return (
-                <div className="colapse-container" style={{width:"100%", height:"100%"}}>
-                <div style={{ padding:"2% 30% 0 30%", display:"flex", flexDirection:"column", justifyContent:"center", backgroundColor:"#3e444a"}}>
-        <h2 style={{display:"flex", justifyContent:"center", margin: "0 0 5% 1%", color:"white"}}>Create a How-to!</h2>
+        <div className="colapse-container" style={{width:"100%", height:"100%"}}>
+        <div style={{ padding:"2% 30% 0 30%", display:"flex", flexDirection:"column", justifyContent:"center", backgroundColor:"#3e444a"}}>
+        <h3 style={{display:"flex", justifyContent:"center", margin: "0 0 5% 1%", color:"white"}}>Welcome to your Dashboard</h3>
         <Button color="dark" onClick={toggle} style={{ marginBottom: '1rem' }}>Add A How-To </Button>
         <Collapse isOpen={isOpen}>
                 <div style={{}}>
@@ -72,7 +72,7 @@ const toggle = () => setIsOpen(!isOpen);
                 <input
                 style={{margin:"0 0 5% 0"}}
                 />
-                    <label style={{color:"White",}}>Author Name</label>
+                <label style={{color:"White",}}>Author Name</label>
                 <input
                 style={{margin:"0 0 5% 0"}}
                 />
