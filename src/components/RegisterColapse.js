@@ -20,10 +20,9 @@ const RegisterColapse = (props) => {
     
     const [signup, setSignup] = useState({username: "", password: ""})
 
-    const onSubmit = (e) => {
-        console.log("testing post request for register :");
+    const onSubmit = () => {
         axiosWithAuth()
-            .post("/register", signup)
+            .post("/auth/register", signup)
             .then(res => {
                 console.log("my response from register :", res);
                 // localStorage.setItem("token", res.data.user.token);
@@ -31,7 +30,6 @@ const RegisterColapse = (props) => {
                 // props.history.push("/dashboard");
             })
             .catch(err => {console.log("error with register post :", err)});
-        // e.target.reset();
     }
     const changeHandler = elem => {
         setSignup({ ...signup, [elem.target.name]: elem.target.value });

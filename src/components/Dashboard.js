@@ -22,18 +22,43 @@
 //     </div>
 // })
 
-import React from 'react';
-import CreatorForm from './CreatorForm';
-import Feed from './Feed';
+import { Switch, Route } from 'react-router-dom'
 
-const Dashboard = () => {
+import React, { useState, useEffect } from 'react';
+import CreatorForm from './CreatorForm';
+import axios from 'axios';
+import HowToDetails from './HowToDetails';
+import DashCard from './DashCard';
+
+
+const Dashboard = props => {
+    const [howTos, setHowTos] = useState([])
+   
+    useEffect(() => {
+      const getHowTos = () => {
+        axios
+          .get('https://how-to-3.herokuapp.com/api/guides')
+          .then(response => {
+            setHowTos(response.data);
+          })
+          .catch(error => {
+            console.error('Server Error', error);
+          });
+      }
+      
+      getHowTos();
+    }, []);
+    
+
+
     return (
-        <div>
-            
-            <CreatorForm />
-            <Feed /> 
-        </div>
+     <div className="howTo-list">
+      {howTos.map(howTo => (
+        <HowToDetails key={howTo.id} howTo={howTo} />
+      ))}
+    </div>
     )
 }
+
 
 export default Dashboard
