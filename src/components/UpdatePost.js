@@ -2,7 +2,7 @@
 // DISPLAY DELETE BUTTON TO DELETE CARD ENTIRELY
 
 
-
+import { useHistory } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import axiosWithAuth from './axiosWithAuth';
@@ -29,20 +29,11 @@ const [isOpen, setIsOpen] = useState(false);
 const toggle = () => setIsOpen(!isOpen);
 
 const [howto, setHowto] = useState({
-        guide_name:"",
-        category:"",
-        description:"",
-        score:""
+        guide_name: props.howToCard.guide_name,
+        category: props.howToCard.category,
+        description: props.howToCard.description,
+        score: props.howToCard.score
 })
-        useEffect(()=> {
-                axiosWithAuth()
-                .get(`guides/${props.id}`)
-                .then( res => {
-                        console.log("my res from updating", res)
-                        setHowto(res.data)
-                })
-                .catch(error => {console.log("error fetching guide to update  :", error)})
-        },[props.id])
 
         const handleChange = e => {
                 console.log(e.target.value)
@@ -52,16 +43,23 @@ const [howto, setHowto] = useState({
                 })
         }
 
+        const history = useHistory();
+
         const handleSubmit = e => {
                 e.preventDefault();
                 axiosWithAuth()
-                .put(`/guides/:guideID`)
-                .then()
+                .put(`/guides/${props.howToCard.guide_id}`, howto)
+                .then( res => {
+                        console.log("update response :", res)
+                        history.push('/dashboard')
+                })
                 .catch(error => {console.log("error updating :", error)})
         }
+        console.log("my props :", props.howToCard.guide_id)
 
 
         return (
+                
                 <div className="colapse-container" style={{width:"100%", height:"100%"}}>
                 <div style={{ padding:"2% 0% 0 0%", display:"flex", flexDirection:"column", justifyContent:"center", backgroundColor:"#3e444a"}}>
                 <Button color="dark" onClick={toggle} style={{ marginTop:"1rem", marginBottom: '1rem'}}>Edit This How-To</Button>
@@ -71,21 +69,33 @@ const [howto, setHowto] = useState({
                 <div style={{}}>
                 <CardBody color="dark">
                         <div style={{margin:"0 20% 0 20%"}}>
-                <form style={{display:"flex", flexDirection:"column"}}>
+                <form onSubmit={handleSubmit} style={{display:"flex", flexDirection:"column"}}>
                 <label style={{color:"White",}}>New Guide Name:</label>
-                <input
-                style={{margin:"0 0 5% 0"}}
-                />
+                        <input
+                        name="guide_name"
+                        value={howto.guide_name}
+                        onChange={handleChange}
+                        style={{margin:"0 0 5% 0"}}
+                        />
                 <label style={{color:"White",}}>New Catagory:</label>
                 <input
+                name="category"
+                value={howto.category}
+                onChange={handleChange}
                 style={{margin:"0 0 5% 0"}}
                 />
                 <label style={{color:"White",}}>New Description:</label>
                 <input
+                name="description"
+                value={howto.description}
+                onChange={handleChange}
                 style={{margin:"0 0 5% 0"}}
                 />
                 <label style={{color:"White",}}>New Difficulty:</label>
                 <input
+                name="score"
+                value={howto.score}
+                onChange={handleChange}
                 style={{margin:"0 0 5% 0"}}
                 />
                 <button style={{margin:"10% 0 0 0", borderRadius:"5px", width:"100%",}}>Confirm</button>
@@ -98,7 +108,7 @@ const [howto, setHowto] = useState({
         </Collapse>
         </div>
 </div>
-        )
+                )
 }
 
 export default UpdatePost;
