@@ -13,26 +13,36 @@ import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import UpdatePost from './components/UpdatePost';
 import Feed from './components/Feed';
+import PrivateRoute from './components/PrivateRoute';
+import { UserContext } from './components/UserContext';
+import DashCard from './components/DashCard';
+
 
 // LAYOUY FOR ROUTES EXAMPLE
 
 
-function App() {
+
+
+const App = () => {
+
+
   return (
-    <div className="main-container" style={{padding:"0 0 20% 0", backgroundColor:"#3e444a"}}>
-      <Navigation />
-      
-        {/* SWITCH + ROUTES HERE */}
+    <UserContext.Provider value="">
+      <div className="main-container" style={{padding:"0 0 20% 0", backgroundColor:"#3e444a"}}>
+        <Navigation />
+        
+          {/* SWITCH + ROUTES HERE */}
 
-      <Switch>
-              <Route exact path="/" component={Feed}/>
-              <Route path="/login" component={Login}/>
-              <Route path="/dashboard" component={Dashboard}/>
-      </Switch> 
-      <Particles />
-
+        <Switch>
+                <Route exact path="/" component={Feed}/>
+                <Route path="/login" component={Login}/>
+                <PrivateRoute path="/dashboard" component={Dashboard}/>
+                <PrivateRoute path ="/Guides/:id" component={DashCard} />
+        </Switch> 
+        <Particles />
         {/* PARTICLES ANIMATION BELOW */}
-    </div>
+      </div>
+    </UserContext.Provider>
   );
 }
 

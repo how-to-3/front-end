@@ -1,17 +1,23 @@
 import React, { useState } from 'react';
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import axiosWithAuth from './axiosWithAuth';
+import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 
 const LoginColapse = (props) => {
 
     const[userCredentials, setUserCredentials] = useState({username:'', password:''})
 
+    const history = useHistory()
+    
     const handleChange = e => {
         setUserCredentials({
             ...userCredentials,
             [e.target.name]: e.target.value
             })
     }
+
     const onSubmit = e => {
         e.preventDefault();
         axiosWithAuth()
@@ -19,7 +25,7 @@ const LoginColapse = (props) => {
         .then( res => {
             console.log("my response from login :", res)
             localStorage.setItem('token', res.data.token)
-            // props.history.push('/dashboard')
+            history.push('/dashboard')
         })
         .catch(err => {console.log("error with login post :", err)})
     }
@@ -30,8 +36,19 @@ const LoginColapse = (props) => {
 
     return (
         <div className="colapse-container" style={{width:"100%", height:"100%"}}>
-                <div style={{ padding:"2% 30% 0 30%", display:"flex", flexDirection:"column", justifyContent:"center", backgroundColor:"#3e444a"}}>
-            <h2 style={{display:"flex", justifyContent:"center", margin: "0 0 5% 1%", color:"white"}}>Log In / Register</h2>
+            <div style={{ padding:"2% 30% 0 30%", display:"flex", flexDirection:"column", justifyContent:"center", backgroundColor:"#3e444a"}}>
+                <h2 style={{display:"flex", justifyContent:"center", margin: "0 0 2% 1%", color:"white"}}>Log In / Register</h2>
+                <h5 style={{display:"flex", justifyContent:"center",color:"white", margin:"1% 0 3% 0",}}><Link to ="/" style={{color:"white"}}>Skip This</Link></h5>
+            <div>
+            
+            {/* <div className="feed-header-container" style={{color:"white", display: "flex", flexDirection:"column", alignItems: "center", margin: "2% 2% 1% 2%"}}>
+            <h1>How-To Feed</h1>
+			<h5><Link to ="/login" style={{color:"white"}}>Log In/Register</Link> to Create a Post</h5>
+            </div> */}
+
+
+
+            </div>
             <Button color="dark" onClick={toggle} style={{ marginBottom: '1rem' }}>Log In</Button>
             <Collapse isOpen={isOpen}>
                 <div style={{}}>
