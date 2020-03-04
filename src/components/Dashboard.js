@@ -27,7 +27,8 @@ import { Switch, Route } from 'react-router-dom'
 import React, { useState, useEffect } from 'react';
 import CreatorForm from './CreatorForm';
 import axios from 'axios';
-
+import HowToDetails from './HowToDetails';
+import DashCard from './DashCard';
 
 
 const Dashboard = props => {
@@ -58,7 +59,6 @@ const Dashboard = props => {
     </div>
     )
 }
-
 
 
 export default Dashboard

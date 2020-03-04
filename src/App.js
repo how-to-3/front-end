@@ -13,7 +13,8 @@ import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import UpdatePost from './components/UpdatePost';
 import Feed from './components/Feed';
-
+import HowToDetails from './components/HowToDetails';
+import DashCard from './components/DashCard';
 // LAYOUY FOR ROUTES EXAMPLE
 
 
@@ -28,6 +29,7 @@ function App() {
               <Route exact path="/" component={Feed}/>
               <Route path="/login" component={Login}/>
               <Route path="/dashboard" component={Dashboard}/>
+              <Route exact path ="/Guides/:id" component = {DashCard}/>
       </Switch> 
       <Particles />
 
