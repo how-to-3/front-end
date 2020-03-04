@@ -45,8 +45,36 @@
 
 import React, { useState } from 'react';
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
+import axiosWithAuth from './axiosWithAuth';
+import { useHistory } from 'react-router-dom';
+
 
 const CreatorForm = props => {
+
+const [newHowTo, setNewHowTo] = useState({
+        guide_name:"",
+        category:"",
+        description:"",
+        score:""
+})
+
+const handleChanges = e => {
+        setNewHowTo({...newHowTo,[e.target.name]: e.target.value})
+}
+
+const history = useHistory()
+
+const handleSubmit = e => {
+        setNewHowTo([newHowTo])
+        console.log("new how-to submitted :", newHowTo)
+        axiosWithAuth()
+        .post(`/guides`, newHowTo)
+        .then( res => {
+                console.log(res)
+        })
+        .catch(err => {console.log("error adding new how-to", err)})
+}
+
 
 const [isOpen, setIsOpen] = useState(false);
 const toggle = () => setIsOpen(!isOpen);
@@ -63,22 +91,34 @@ const toggle = () => setIsOpen(!isOpen);
                 <div style={{}}>
                 <CardBody color="dark">
                         <div style={{margin:"0 20% 0 20%"}}>
-                <form style={{display:"flex", flexDirection:"column"}}>
-                <label style={{color:"White",}}>Title</label>
+                <form onSubmit={handleSubmit} style={{display:"flex", flexDirection:"column"}}>
+                <label style={{color:"White",}}>Guide Name:</label>
                 <input
+                name="guide_name"
+                onChange={handleChanges}
                 style={{margin:"0 0 5% 0"}}
                 />
-                <label style={{color:"White",}}>Description </label>
+                <label style={{color:"White",}}>Category:</label>
                 <input
+                name="category"
+                onChange={handleChanges}
                 style={{margin:"0 0 5% 0"}}
                 />
-                <label style={{color:"White",}}>Author Name</label>
+                <label style={{color:"White",}}>Description:</label>
                 <input
+                name="description"
+                onChange={handleChanges}
+                style={{margin:"0 0 5% 0"}}
+                />
+                <label style={{color:"White",}}>Difficulty:</label>
+                <input
+                name="score"
+                onChange={handleChanges}
                 style={{margin:"0 0 5% 0"}}
                 />
                 <button style={{margin:"10% 0 0 0", borderRadius:"5px", width:"100%",}}>Publish!</button>
-            </form>
-            </div>
+                </form>
+                </div>
                 </CardBody>
                 </div>
             </Card>
