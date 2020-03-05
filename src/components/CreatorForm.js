@@ -112,11 +112,10 @@ const toggle = () => setIsOpen(!isOpen);
                         </p>
                     )}
                 <FormGroup>
-                        <Label for="exampleFile">File</Label>
+                        <Label for="File">File</Label>
                         <Input type="file" onChange={fileChangeHandler} />
-                        <FormText color="muted">
-                                This is some placeholder block-level help text for the above input.
-                                It's a bit lighter and easily wraps to a new line.
+                        <FormText>
+                                Upload an image for your How-To!
                         </FormText>
                 </FormGroup>
                 <button style={{margin:"10% 0 0 0", borderRadius:"5px", width:"100%",}}>Publish!</button>
