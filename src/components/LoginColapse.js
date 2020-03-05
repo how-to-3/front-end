@@ -30,18 +30,15 @@ const LoginColapse = (props) => {
         .catch(err => {console.log("error with login post :", err)})
     }
 
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
 
     const toggle = () => setIsOpen(!isOpen);
 
-
-    
-
     return (
         <div className="colapse-container" style={{width:"100%", height:"100%"}}>
-            <div style={{ padding:"2% 30% 0 30%", display:"flex", flexDirection:"column", justifyContent:"center", backgroundColor:"#3e444a"}}>
-                <h2 style={{display:"flex", justifyContent:"center", margin: "0 0 2% 1%", color:"white"}}>Log In / Register</h2>
-                <h5 style={{display:"flex", justifyContent:"center",color:"white", margin:"1% 0 3% 0",}}><Link to ="/" style={{color:"white"}}>Skip This</Link></h5>
+            <div style={{ padding:"1% 30% 0 30%", display:"flex", flexDirection:"column", justifyContent:"center", backgroundColor:"#3e444a"}}>
+                <h2 style={{display:"flex", justifyContent:"center", margin: "0 0 25px 1%", color:"white"}}>Log In / Register</h2>
+                <h5 style={{display:"flex", justifyContent:"center",color:"white", margin:"1% 0 50px 0",}}><Link to ="/" style={{color:"white"}}>(Or Go directly to <span style={{color:"#FFBA08",}}>the Feed</span>)</Link></h5>
             <div>
             
             {/* <div className="feed-header-container" style={{color:"white", display: "flex", flexDirection:"column", alignItems: "center", margin: "2% 2% 1% 2%"}}>
@@ -52,14 +49,16 @@ const LoginColapse = (props) => {
 
 
             </div>
-            <Button color="dark" onClick={toggle} style={{marginBottom: '1rem' }}>Log In</Button>
+            <div style={{display:"flex", justifyContent:"center", justifyItems:"center"}}>
+            <Button color="dark" onClick={toggle} style={{marginBottom: '1rem', display:"flex", width:"195px", justifyContent:"center"}}>Log In</Button>
+            </div>
             <Collapse isOpen={isOpen}>
                 <div style={{}}>
                 <Card color="dark">
                 <div style={{}}>
                     <CardBody color="dark">
                         <div style={{margin:"0 20% 0 20%"}}>
-                <form onSubmit={handleSubmit(onSubmit)} style={{display:"flex", flexDirection:"column"}}>
+                <form onSubmit={handleSubmit(onSubmit)} style={{display:"flex", flexDirection:"column", alignContent:"center"}}>
                     <label style={{color:"White",}}>Username</label>
                     <input
                     name="username"
@@ -101,7 +100,7 @@ const LoginColapse = (props) => {
                     )}
 
 
-                    <button type="submit" style={{margin:"10% 0 0 0", borderRadius:"5px", width:"100%",}}>Sign In</button>
+                    <button type="submit" style={{margin:"10% 0 0 0", borderRadius:"5px", width:"100%"}}>Sign In</button>
                 </form>
                 </div>
                     </CardBody>
