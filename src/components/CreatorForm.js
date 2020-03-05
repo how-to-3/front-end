@@ -1,32 +1,37 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Collapse, Button, CardBody, Card } from 'reactstrap';
+import { Collapse, Button, CardBody, Card, FormGroup, Label, Input, FormText } from 'reactstrap';
 import axiosWithAuth from './axiosWithAuth';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import { NameContext } from '../App';
 
+
 const CreatorForm = () => {
 const { register, handleSubmit, errors } = useForm()    
-
+const [selectedFile, setSelectedFile] = useState('')
 const { newHowTo, setNewHowTo, resetCard } = useContext(NameContext);
+const history = useHistory()
 
 const handleChanges = e => {
         setNewHowTo({...newHowTo,[e.target.name]: e.target.value})
-}
-
-const history = useHistory()
-
-// const fileUploadHandler = (id) => {
-//     const fd = new FormData();
-//     fd.append('guide_image', selectedFile)
-//     axiosWithAuth()
-//     .put(`/guides/${id}/img_upload`)
-//     .then()
-//     .catch()
-// }
-
-// const submitHandler = (e) => {
-// }
+};
+const fileChangeHandler = e => {
+        setSelectedFile(e.target.files[0])
+};
+const fileSubmitHandler = (id) => {
+        const fd = new FormData();
+        fd.append('guide_image', selectedFile)
+        axiosWithAuth()
+                .put(`/guides/${id}/img_upload`, fd)
+                .then(res => {
+                        console.log('Image was uploaded!', res)
+                        resetCard()
+                        history.push('/')
+                })
+                .catch(err => {
+                        console.log(err)
+                })
+};
 
 const onSubmit = () => {
         setNewHowTo(newHowTo)
@@ -35,8 +40,9 @@ const onSubmit = () => {
         .post(`/guides`, newHowTo)
         .then( res => {
                 console.log("guide posted successfully :", res)
-                resetCard()
-                history.push('/')
+                fileSubmitHandler(res.data.newGuide.guide_id)
+                // resetCard()
+                // history.push('/')
         })
         .catch(err => {console.log("error adding new how-to", err)})
 }
@@ -105,6 +111,13 @@ const toggle = () => setIsOpen(!isOpen);
                             This field is required
                         </p>
                     )}
+                <FormGroup>
+                        <Label for="File">File</Label>
+                        <Input type="file" onChange={fileChangeHandler} />
+                        <FormText>
+                                Upload an image for your How-To!
+                        </FormText>
+                </FormGroup>
                 <button style={{margin:"10% 0 0 0", borderRadius:"5px", width:"100%",}}>Publish!</button>
                 </form>
                 </div>
