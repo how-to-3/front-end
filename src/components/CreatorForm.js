@@ -1,10 +1,9 @@
-
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import axiosWithAuth from './axiosWithAuth';
+import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
-import { useForm } from "react-hook-form";
+
 
 const CreatorForm = props => {
 const { register, handleSubmit, errors } = useForm()    
@@ -14,17 +13,21 @@ const [newHowTo, setNewHowTo] = useState({
         description:"",
         score:""
 })
+
 const handleChanges = e => {
         setNewHowTo({...newHowTo,[e.target.name]: e.target.value})
 }
+
 const history = useHistory()
-const onSubmit = () => {
+
+const onSubmit = ()=> {
         setNewHowTo([newHowTo])
         console.log("new how-to submitted :", newHowTo)
         axiosWithAuth()
         .post(`/guides`, newHowTo)
         .then( res => {
-                console.log(res)
+                console.log("guide posted successfully :",res)
+                history.push('/')
         })
         .catch(err => {console.log("error adding new how-to", err)})
 }
