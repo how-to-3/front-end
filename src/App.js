@@ -31,7 +31,7 @@ const App = () => {
 
   const [howTos, setHowTos] = useState([])
   const [newHowTo, setNewHowTo] = useState(initialState)
-  const [howToCard, setHowToCard] = useState({guide_name:"",category:"",description:"", score:""})
+  const [howToCard, setHowToCard] = useState(initialState)
 
   const resetCard = () => {
     setHowTos(initialState)

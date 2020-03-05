@@ -44,16 +44,16 @@ const [howto, setHowto] = useState({
 
         return (
                 
-                <div className="colapse-container" style={{width:"100%", height:"100%"}}>
-                <div style={{ padding:"2% 0% 0 0%", display:"flex", flexDirection:"column", justifyContent:"center", backgroundColor:"#1C3144",}}>
-                <Button color="dark" onClick={toggle} style={{ marginTop:"1rem", marginBottom: '1rem'}}>Edit This How-To</Button>
+                <div className="colapse-container" style={{width:"80%", height:"100%", }}>
+                <div style={{ padding:"2% 0% 0 0%", display:"flex", flexDirection:"column", justifyContent:"center", backgroundColor:"#343A40",}}>
+                <Button color="dark" onClick={toggle} style={{ marginTop:"2rem", marginBottom: '1rem', backgroundColor:"#343A40", width: "50%", border:"1px solid black"}}>Edit This How-To</Button>
                 <Collapse isOpen={isOpen}>
-                <div style={{}}>
+                <div style={{width:"125%"}}>
                 <Card color="dark">
                 <div style={{}}>
                 <CardBody color="dark">
                         <div style={{margin:"0 20% 0 20%"}}>
-                <form onSubmit={handleSubmit(onSubmit)} style={{display:"flex", flexDirection:"column"}}>
+                <form onSubmit={handleSubmit(onSubmit)} style={{display:"flex", flexDirection:"column", width:"100%"}}>
                 <label style={{color:"White",}}>New Guide Name:</label>
                         <input
                         name="guide_name"
