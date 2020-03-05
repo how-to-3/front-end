@@ -3,6 +3,7 @@ import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from 'reac
 import { Link } from 'react-router-dom';
 import pic6v3 from '../assets/pic6v3.PNG'
 import Styled from 'styled-components';
+import { NavLink } from "react-router-dom";
 
 
 const StyledAnchor = Styled.a`
@@ -30,17 +31,17 @@ const Navigation = (props) => {
                     <div className="nav-item-container">
                         <a href="/login" onClick={!collapsed}>
                             <NavItem className="nav-item-item">
-                                <Link to="/login" style={{color: "white",}}>Log In / Sign Up</Link>
+                                <NavLink to="/login" style={{color: "white",}}>Log In / Sign Up</NavLink>
                             </NavItem>
                         </a>
                         <a href="/dashboard" onClick={!collapsed}>
                             <NavItem className="nav-item-item">
-                                <Link to="/dashboard" style={{color: "white",}}>Dashboard</Link>
+                                <NavLink to="/dashboard" style={{color: "white",}}>Dashboard</NavLink>
                             </NavItem>
                         </a>
                         <a href="/marketing-ui" onClick={!collapsed}>
                             <NavItem className="nav-item-item">
-                                <Link to="/marketing-ui" style={{color: "white",}}>What is 'How-To'?</Link>
+                                <NavLink to="/marketing-ui" style={{color: "white",}}>What is 'How-To'?</NavLink>
                             </NavItem>
                         </a>
                     </div>
