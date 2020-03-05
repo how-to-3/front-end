@@ -14,13 +14,15 @@ const [newHowTo, setNewHowTo] = useState({
         score:""
 })
 
+const { register, handleSubmit, errors } = useForm()
+
 const handleChanges = e => {
         setNewHowTo({...newHowTo,[e.target.name]: e.target.value})
 }
 
 const history = useHistory()
 
-const onSubmit = ()=> {
+const onSubmit = e => {
         setNewHowTo([newHowTo])
         console.log("new how-to submitted :", newHowTo)
         axiosWithAuth()
@@ -31,6 +33,7 @@ const onSubmit = ()=> {
         })
         .catch(err => {console.log("error adding new how-to", err)})
 }
+
 const [isOpen, setIsOpen] = useState(false);
 const toggle = () => setIsOpen(!isOpen);
         return (
