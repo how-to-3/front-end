@@ -1,24 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import axiosWithAuth from './axiosWithAuth';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
+import { NameContext } from '../App';
 
-
-const CreatorForm = props => {
+const CreatorForm = () => {
 const { register, handleSubmit, errors } = useForm()    
-const [newHowTo, setNewHowTo] = useState({
-        guide_name:"",
-        category:"",
-        description:"",
-        score:""
-})
+
+const { newHowTo, setNewHowTo } = useContext(NameContext);
 
 const handleChanges = e => {
         setNewHowTo({...newHowTo,[e.target.name]: e.target.value})
 }
 
 const history = useHistory()
+
+// const fileUploadHandler = (id) => {
+//     const fd = new FormData();
+//     fd.append('guide_image', selectedFile)
+//     axiosWithAuth()
+//     .put(`/guides/${id}/img_upload`)
+//     .then()
+//     .catch()
+// }
+
+// const submitHandler = (e) => {
+// }
 
 const onSubmit = e => {
         setNewHowTo([newHowTo])
@@ -37,8 +45,10 @@ const toggle = () => setIsOpen(!isOpen);
         return (
         <div className="colapse-container" style={{width:"100%", height:"100%"}}>
         <div style={{ padding:"2% 25% 0 25%", display:"flex", flexDirection:"column", justifyContent:"center", backgroundColor:"#3E444A"}}>
-        <h3 style={{display:"flex", justifyContent:"center", margin: "0 0 5% 1%", color:"white"}}>Welcome to your Dashboard</h3>
-        <Button color="dark" onClick={toggle} style={{ marginBottom: '1rem' }}>Add A How-To </Button>
+        <div style={{display:"flex", justifyContent:"space-between"}}>
+        <h3 style={{display:"flex", justifyContent:"center", margin: "0 0 1% 0%", color:"white"}}>Welcome to the<br></br> Dashboard </h3>
+            <Button color="dark" onClick={toggle} style={{ width:"20%", marginBottom: '1rem' }}>Add A How-To </Button>
+        </div>
         <Collapse isOpen={isOpen}>
                 <div style={{}}>
                 <Card color="dark">
@@ -53,7 +63,7 @@ const toggle = () => setIsOpen(!isOpen);
                 style={{margin:"0 0 5% 0"}}
                 ref={register({required: true})}
                 />
-                 {errors.guide_name&& errors.guide_name.type === 'required' && (
+                {errors.guide_name&& errors.guide_name.type === 'required' && (
                         <p style={{color:"red"}}>
                             This field is required
                         </p>
@@ -65,7 +75,7 @@ const toggle = () => setIsOpen(!isOpen);
                 style={{margin:"0 0 5% 0"}}
                 ref={register({required: true })}  
                 />
-                 {errors.category&& errors.category.type === 'required' && (
+                {errors.category&& errors.category.type === 'required' && (
                         <p style={{color:"red"}}>
                             This field is required
                         </p>
@@ -77,7 +87,7 @@ const toggle = () => setIsOpen(!isOpen);
                 style={{margin:"0 0 5% 0"}}
                 ref={register({required: true })}  
                 />
-                 {errors.description&& errors.description.type === 'required' && (
+                {errors.description&& errors.description.type === 'required' && (
                         <p style={{color:"red"}}>
                             This field is required
                         </p>
@@ -89,7 +99,7 @@ const toggle = () => setIsOpen(!isOpen);
                 style={{margin:"0 0 5% 0"}}
                 ref={register({required: true })}  
                 />
-                 {errors.score&& errors.score.type === 'required' && (
+                {errors.score&& errors.score.type === 'required' && (
                         <p style={{color:"red"}}>
                             This field is required
                         </p>

@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
+import { Link, useHistory } from 'react-router-dom';
+import { useForm } from "react-hook-form";
 import axiosWithAuth from './axiosWithAuth';
-import { useHistory } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import { useForm } from "react-hook-form"
 
 const LoginColapse = (props) => {
 
@@ -35,6 +34,9 @@ const LoginColapse = (props) => {
 
     const toggle = () => setIsOpen(!isOpen);
 
+
+    
+
     return (
         <div className="colapse-container" style={{width:"100%", height:"100%"}}>
             <div style={{ padding:"2% 30% 0 30%", display:"flex", flexDirection:"column", justifyContent:"center", backgroundColor:"#3e444a"}}>
@@ -50,7 +52,7 @@ const LoginColapse = (props) => {
 
 
             </div>
-            <Button color="dark" onClick={toggle} style={{ marginBottom: '1rem' }}>Log In</Button>
+            <Button color="dark" onClick={toggle} style={{marginBottom: '1rem' }}>Log In</Button>
             <Collapse isOpen={isOpen}>
                 <div style={{}}>
                 <Card color="dark">

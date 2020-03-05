@@ -1,5 +1,5 @@
 // REACT
-import React from 'react';
+import React, { createContext, useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 // STYLES
@@ -11,27 +11,30 @@ import Navigation from './components/Navigation';
 import Particles from './components/Particles';
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
-import UpdatePost from './components/UpdatePost';
 import Feed from './components/Feed';
 import PrivateRoute from './components/PrivateRoute';
-import { UserContext } from './components/UserContext';
 import DashCard from './components/DashCard';
-
 
 // LAYOUY FOR ROUTES EXAMPLE
 
 
 
 
-const App = () => {
 
+export const NameContext = createContext();
+
+
+const App = () => {
+  
+  const [howTos, setHowTos] = useState([])
+  const [newHowTo, setNewHowTo] = useState({guide_name:"", category:"", description:"", score:""})
+  const [howToCard, setHowToCard] = useState({guide_name:"",category:"",description:"", score:""})
 
   return (
-    <UserContext.Provider value="">
+  <>
+    <NameContext.Provider value={{howTos, setHowTos, newHowTo, setNewHowTo, howToCard, setHowToCard,}}>
       <div className="main-container" style={{padding:"0 0 20% 0", backgroundColor:"#3e444a"}}>
         <Navigation />
-        
-          {/* SWITCH + ROUTES HERE */}
 
         <Switch>
                 <Route exact path="/" component={Feed}/>
@@ -40,9 +43,9 @@ const App = () => {
                 <PrivateRoute path ="/Guides/:id" component={DashCard} />
         </Switch> 
         <Particles />
-        {/* PARTICLES ANIMATION BELOW */}
       </div>
-    </UserContext.Provider>
+    </NameContext.Provider>
+  </>
   );
 }
 
