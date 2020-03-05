@@ -31,11 +31,11 @@ const Navigation = (props) => {
                     <div className="nav-item-container">
                             
                             <NavItem className="nav-item-item" onClick={!collapsed}>
-                                <NavLink to="/login">Log In / Sign Up</NavLink>
+                                <Link to="/login">Log In / Sign Up</Link>
                             </NavItem>
 
                             <NavItem className="nav-item-item" onClick={!collapsed}>
-                                <NavLink to="/dashboard">Dashboard</NavLink>
+                                <Link to="/dashboard">Dashboard</Link>
                             </NavItem>
 
                             <NavItem className="nav-item-item" onClick={!collapsed}>
