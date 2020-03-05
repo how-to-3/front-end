@@ -20,7 +20,7 @@ const Navigation = (props) => {
     const toggleNavbar = () => setCollapsed(!collapsed);
 
     return (
-    <div className="nav-container" style={{position: "sticky", top:"0"}}>
+    <div className="nav-container" style={{backgroundColor:"#1C3144", position: "sticky", top:"0"}}>
         <Navbar color="dark" light>
             <StyledAnchor onClick={toggleNavbar}>
                 <NavbarBrand className="mr-auto" style={{margin:"0",color: "white",}}><img style={{margin:"0 0 2% 2%", width: "35%", height: "auto"}} src={pic6v3} alt=""/></NavbarBrand>
@@ -47,7 +47,6 @@ const Navigation = (props) => {
                     </div>
                 </Nav>
             </Collapse>
-
         </Navbar>
     </div>
 )};

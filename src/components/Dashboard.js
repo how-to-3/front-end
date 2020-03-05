@@ -27,7 +27,8 @@ const Dashboard = () => {
         
         <div className="howTo-list">
             <CreatorForm />
-            { howTos.length > 0 ? 
+            { 
+            howTos.length > 0 ?
             (
                 howTos.map(howTo => (
                 <HowToDetails key={howTo.id} howTo={howTo} />

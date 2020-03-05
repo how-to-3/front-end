@@ -3,11 +3,13 @@ import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import axiosWithAuth from './axiosWithAuth';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-
+import { useForm } from "react-hook-form"
 
 const LoginColapse = (props) => {
 
     const[userCredentials, setUserCredentials] = useState({username:'', password:''})
+
+    const { register, handleSubmit, errors } = useForm()
 
     const history = useHistory()
     
@@ -18,8 +20,7 @@ const LoginColapse = (props) => {
             })
     }
 
-    const onSubmit = e => {
-        e.preventDefault();
+    const onSubmit = () => {
         axiosWithAuth()
         .post('/auth/login', userCredentials)
         .then( res => {
@@ -56,7 +57,7 @@ const LoginColapse = (props) => {
                 <div style={{}}>
                     <CardBody color="dark">
                         <div style={{margin:"0 20% 0 20%"}}>
-                <form onSubmit={onSubmit} style={{display:"flex", flexDirection:"column"}}>
+                <form onSubmit={handleSubmit(onSubmit)} style={{display:"flex", flexDirection:"column"}}>
                     <label style={{color:"White",}}>Username</label>
                     <input
                     name="username"
@@ -64,15 +65,40 @@ const LoginColapse = (props) => {
                     onChange={handleChange}
                     style={{margin:"0 0 5% 0"}}
                     value={userCredentials.username}
+                    ref={register({ required: true, minLength: 3 })}
                     />
+                    {errors.username && errors.username.type === "required" && (
+                    <p style={{color:"red"}}>
+                        This field is required.
+                    </p>
+                    )}
+                    {errors.username && errors.username.type === "minLength" && (
+                    <p style={{color:"red"}}>
+                        This field requires a minimum length of 3 characters.
+                    </p>
+                    )}
+
                     <label style={{color:"White",}}>Password</label>
                     <input
                     name="password"
                     type="password"
                     onChange={handleChange}
                     style={{margin:"0 0 5% 0"}}
-                    value={userCredentials.password} 
+                    value={userCredentials.password}
+                    ref={register({ required: true, minLength: 6 })} 
                     />
+                    {errors.password && errors.password.type === "required" && (
+                    <p style={{color:"red"}}>
+                        This field is required.
+                    </p>
+                    )}
+                    {errors.password && errors.password.type === "minLength" && (
+                    <p style={{color:"red"}}>
+                        This field requires a minimum length of 3 characters.
+                    </p>
+                    )}
+
+
                     <button type="submit" style={{margin:"10% 0 0 0", borderRadius:"5px", width:"100%",}}>Sign In</button>
                 </form>
                 </div>
