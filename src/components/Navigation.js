@@ -29,21 +29,18 @@ const Navigation = (props) => {
             <Collapse isOpen={!collapsed} navbar>
                 <Nav navbar>
                     <div className="nav-item-container">
-                        <a href="/login" onClick={!collapsed}>
-                            <NavItem className="nav-item-item">
-                                <NavLink to="/login" style={{color: "white",}}>Log In / Sign Up</NavLink>
+                            
+                            <NavItem className="nav-item-item" onClick={!collapsed}>
+                                <Link to="/login" style={{color: "white",}}>Log In / Sign Up</Link>
                             </NavItem>
-                        </a>
-                        <a href="/dashboard" onClick={!collapsed}>
-                            <NavItem className="nav-item-item">
-                                <NavLink to="/dashboard" style={{color: "white",}}>Dashboard</NavLink>
+
+                            <NavItem className="nav-item-item" onClick={!collapsed}>
+                                <Link to="/dashboard" style={{color: "white",}}>Dashboard</Link>
                             </NavItem>
-                        </a>
-                        <a href="/marketing-ui" onClick={!collapsed}>
-                            <NavItem className="nav-item-item">
-                                <NavLink to="/marketing-ui" style={{color: "white",}}>What is 'How-To'?</NavLink>
+
+                            <NavItem className="nav-item-item" onClick={!collapsed}>
+                                <a href="marketing-ui" style={{color: "white",}}>What is 'How-To'?</a>
                             </NavItem>
-                        </a>
                     </div>
                 </Nav>
             </Collapse>
