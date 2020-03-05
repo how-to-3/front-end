@@ -62,13 +62,40 @@ const RegisterColapse = (props) => {
                     type="text"
                     onChange={changeHandler}
                     style={{margin:"0 0 5% 0"}}
+                    input 
+                    type= "text" 
+                    ref={register({required: true, minLength: 6 })}
                     />
+                    {errors.username && errors.username.type === 'minLength' && (
+                        <p style={{color:"red"}}>
+                            This field requires a Minimum length of 6 characters 
+                        </p>
+                    )}
+                     {errors.username && errors.username.type === 'required' && (
+                        <p style={{color:"red"}}>
+                            This field is required
+                        </p>
+                    )}
                     <label style={{color:"White",}}>Create a Password <br></br>(Minimum of 6 characters)</label>
                     <input
                     name="password"
                     type="password"
                     onChange={changeHandler}
-                    style={{margin:"0 0 5% 0"}}/>
+                    style={{margin:"0 0 5% 0"}}
+                    ref={register({required: true, minLength: 6 })}
+                     />
+                      {errors.password && errors.password.type === 'minLength' && (
+                        <p style={{color:"red"}}>
+                            This field requires a Minimum length of 6 characters 
+                        </p>
+                    )}
+                     {errors.password && errors.password.type === 'required' && (
+                        <p style={{color:"red"}}>
+                            This field is required
+                        </p>
+                    )}
+                  
+
                     {/* <label style={{margin:"1% 0 1% 0", color:"white", display:"flex", justifyContent:"flexStart"}}>Security Question:</label>
                     <select style={{margin:"1% 0 1% 0"}}> 
                         <option>What was your childhood nickname?</option>
