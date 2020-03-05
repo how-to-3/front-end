@@ -1,38 +1,49 @@
-// MAP THROUGH API DATA + DISPLAY ALL TO-DO ITEMS IN CARDS 
-// IF USER === CREATOR -> LET USER ACCESS PRIVATE 'UPDATE/DELETE' ROUTE WHEN CLICKING ICON ON CARD
-// IF USER !== CREATOR -> REDIRECT USER TO /DASHBOARD + DISPLAY ERROR-> (UNABLE TO UPDATE/DELETE -- USER IS NOT A CREATOR)
-// SEARCH BAR TO FILTER THROUGH CONTENT
-
-
-
-//HOW-TO COLLETION (TITLE/HEADER)
-
-//SEARCH! _______ (use .filter((elem) => {})) --filters data to display only what you're searching for
-
-//<BUTTON> -- (PrivateRoute to CreatorForm) IF USER !== CREATOR -> DISPLAY:NONE OR REDIRECT TO /DASHBOARD
-// Create a How-To!
-//</BUTTON>
-
-//.map((elem) => {
-//     <div>
-//         <p>{elem}</p>
-//         <p>{elem}</p>
-//         <p>{elem}</p>
-//         <p>{elem}</p>
-//     </div>
-// })
-
-import React from 'react';
+import { Switch, Route } from 'react-router-dom'
+import React, { useState, useEffect, useContext } from 'react';
 import CreatorForm from './CreatorForm';
-import Feed from './Feed';
+import UpdatePost from './UpdatePost';
+import axiosWithAuth from './axiosWithAuth';
+import HowToDetails from './HowToDetails';
+import { Spinner } from 'reactstrap'
+import { NameContext } from '../App';
+
 
 const Dashboard = () => {
+
+    
+    const { howTos, setHowTos } = useContext(NameContext);
+
+    useEffect(() => {
+            axiosWithAuth()
+            .get('/guides')
+            .then(response => {
+                console.log("response from api call in dashboard :",response)
+                setHowTos(response.data);
+            })
+            .catch(error => {
+                console.error('Server Error', error);
+            });
+    }, []);
+    
+    console.log("howTo in dashboard : ", howTos)
     return (
-        <div>
-            
+        
+        <div className="howTo-list">
             <CreatorForm />
-            <Feed /> 
-        </div>
+            { 
+            howTos.length > 0 ?
+            (
+                howTos.map(howTo => (
+                <HowToDetails key={howTo.id} howTo={howTo} />
+            ))
+            ) 
+            : 
+            <div className="spinner-container" style={{display:"flex", alignItems:"center", flexDirection:"column",}}>
+                <h6 style={{color:"white", margin:"2% 0 2% 0"}}>OH NO! Your dashboard is empty..</h6>
+                <h6 style={{color:"white", margin:"0% 0 2% 0"}}>Add a New Item to Your Dashboard...</h6>
+            </div>
+            }
+    </div>
     )
 }
 

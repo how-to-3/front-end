@@ -1,71 +1,47 @@
-import React from 'react'
-
-const testData = [
-	{
-		id: 0,
-		title: 'The Godfather',
-		description: 'Francis Ford Coppola',
-		creator: 'Marlon Brando',
-	    difficulty: 10,
-	},
-	{
-		id: 1,
-		title: 'Star Wars',
-		description: 'George Lucas',
-		creator: 'Mark Hamill',
-	    difficulty: 9.2,
-	},
-	{
-		id: 2,
-		title: 'The Lord of the Rings: The Fellowship of the Ring',
-		description: 'Peter Jackson',
-		creator: 'Elijah Wood',
-	    difficulty: 9.2,
-	},
-	{
-		id: 3,
-		title: 'Terminator 2: Judgement Day',
-		description: 'James Cameron',
-		creator: 'Arnold Schwarzenegger',
-	    difficulty: 9.4,
-	},
-	{
-		id: 4,
-		title: 'Dumb and Dumber',
-		description: 'The Farely Brothers',
-		creator: 'Jim Carrey',
-	    difficulty: 7.6,
-	},
-	{
-		id: 5,
-		title: 'Tombstone',
-		description: 'George P. Cosmatos',
-		creator: 'Kurt Russell',
-	    difficulty: 8.9,
-	},
-];
-
+import React, { useEffect, useState } from 'react'
+import axiosWithAuth from './axiosWithAuth';
+import FeedItem from './FeedItem';
+import { Link, Switch } from 'react-router-dom';
+import Login from './Login';
+import { Spinner } from 'reactstrap';
 
 const Feed = () => {
-    console.log(testData)
+
+	const [guides, setGuides] = useState([{id:"", guide_name:""}])
+
+    useEffect(() => {
+        axiosWithAuth()
+        .get("https://how-to-3.herokuapp.com/api/guides")
+        .then(res => {
+			console.log("my response :", res.data)
+			setGuides(res.data)
+		})
+        .catch( error => {console.log("error getting guides :", error)})
+    },[])
+	
     return (
-        <div >
-            <div className="feed-header-container" style={{color:"white", display: "flex", flexDirection:"column", alignItems: "center", margin: "2% 2% 1% 2%"}}>
-            <h1>How-To Feed</h1>
+		<>
+		{console.log("my guides: ", guides)}
+            <div className="feed-header-container">
+            <div style={{display:"flex", justifyContent:"space-between", margin: "0% 25% 0 25%"}}>
+				<h1 style={{color:"white", margin: "3% 0 1.5% 0"}}>How-To Feed</h1>
+				<div style={{margin:"3% 0 0 0"}}>
+					<h5 style={{color:"white",}}><Link to ="/login" style={{color:"white",}}>Log In/Register</Link> to Create a Post</h5>
+					<h6 style={{color:"white",}}><Link to ="/dashboard" style={{color:"white",}}>Go to My Dashboard</Link> (<span style={{textDecoration:"underline"}}>must</span> be logged in)</h6>
+				</div>
+			</div>
+
             </div>
-                {testData.map(elem => {
-                    return (
-                        <div style={{margin:"0 25% 0 25%", justifyItems:"center", border:"5px solid white", display:"flex", flexDirection:"column", color:"white"}}>
-                            <h2>Name: {elem.title}</h2>
-                            <h4>Description: {elem.description}</h4>
-                            <h5>Creator: {elem.creator}</h5>
-                            <h6>Difficulty: {elem.difficulty}</h6>
-                        </div>
-                    )
-                })
-                }
-            
-        </div>
+			{
+			guides.length > 0 ? 
+			<FeedItem guides={guides} /> 
+			: 
+			<div style={{margin:"7.5% 0 7.5% 0", color:"white", display:"Flex", alignItems:"center", flexDirection:"column",}}>
+				<h4>Loading ...</h4>
+				<Spinner color="dark" />
+			</div>
+			}
+		</>
     )
 }
 

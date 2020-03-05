@@ -1,39 +1,61 @@
 // REACT
-import React from 'react';
+import React, { createContext, useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
-
-// STYLES
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
 
 // COMPONENTS 
 import Navigation from './components/Navigation';
 import Particles from './components/Particles';
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
-import UpdatePost from './components/UpdatePost';
 import Feed from './components/Feed';
+import PrivateRoute from './components/PrivateRoute';
+import DashCard from './components/DashCard';
 
-// LAYOUY FOR ROUTES EXAMPLE
+// STYLES
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 
-function App() {
+
+export const NameContext = createContext();
+
+
+const App = () => {
+  
+  const initialState = {
+    guide_name:"", 
+    category:"", 
+    description:"", 
+    score:""
+  }
+
+  const [howTos, setHowTos] = useState([])
+  const [newHowTo, setNewHowTo] = useState(initialState)
+  const [howToCard, setHowToCard] = useState({guide_name:"",category:"",description:"", score:""})
+
+  const resetCard = () => {
+    setHowTos(initialState)
+  }
+
   return (
-    <div className="main-container" style={{padding:"0 0 20% 0", backgroundColor:"#3e444a"}}>
-      <Navigation />
-      
-        {/* SWITCH + ROUTES HERE */}
+  <>
+    <NameContext.Provider value={{resetCard, howTos, setHowTos, newHowTo, setNewHowTo, howToCard, setHowToCard,}}>
+      <div className="main-container" style={{padding:"0 0 20% 0", backgroundColor:"#3e444a"}}>
+        <Navigation />
 
-      <Switch>
-              <Route exact path="/" component={Feed}/>
-              <Route path="/login" component={Login}/>
-              <Route path="/dashboard" component={Dashboard}/>
-      </Switch> 
-      <Particles />
-
-        {/* PARTICLES ANIMATION BELOW */}
-    </div>
+        <Switch>
+                <Route exact path="/" component={Feed}/>
+                <Route path="/login" component={Login}/>
+                <PrivateRoute path="/dashboard" component={Dashboard}/>
+                <PrivateRoute path ="/Guides/:id" component={DashCard} />
+        </Switch> 
+        <Particles />
+      </div>
+    </NameContext.Provider>
+  </>
   );
 }
+
+
 
 export default App;

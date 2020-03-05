@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from 'reactstrap';
-import { Link } from 'react-router-dom';
-import pic6v3 from '../assets/pic6v3.PNG'
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import pic6v4 from '../assets/pic6v4.PNG'
 import Styled from 'styled-components';
-
+import { Link } from 'react-router-dom';
 
 const StyledAnchor = Styled.a`
 &:hover{
@@ -19,34 +18,29 @@ const Navigation = (props) => {
     const toggleNavbar = () => setCollapsed(!collapsed);
 
     return (
-    <div className="nav-container" style={{position: "sticky", top:"0"}}>
+    <div className="nav-container" style={{backgroundColor:"#1C3144", position: "sticky", top:"0"}}>
         <Navbar color="dark" light>
             <StyledAnchor onClick={toggleNavbar}>
-                <NavbarBrand className="mr-auto" style={{margin:"0",color: "white",}}><img style={{margin:"0 0 2% 2%", width: "35%", height: "auto"}} src={pic6v3} alt=""/></NavbarBrand>
+                <NavbarBrand className="mr-auto" style={{margin:"0",color: "white",}}><img style={{margin:"0 0 2% 2%", width: "35%", height: "auto"}} src={pic6v4} alt=""/></NavbarBrand>
             </StyledAnchor>
         <NavbarToggler onClick={toggleNavbar} className="mr-2" />
             <Collapse isOpen={!collapsed} navbar>
                 <Nav navbar>
-                    <div className="nav-item-container">
-                        <a href="/login" onClick={!collapsed}>
-                            <NavItem className="nav-item-item">
-                                <Link to="/login" style={{color: "white",}}>Log In / Sign Up</Link>
+                            <div style={{margin:"0 0 0 10px",}}>
+                            <NavItem>
+                                <NavLink><Link to="/login" onClick={toggleNavbar} style={{color:"#FFBA08"}}>Log In / Sign Up</Link></NavLink>
                             </NavItem>
-                        </a>
-                        <a href="/dashboard" onClick={!collapsed}>
-                            <NavItem className="nav-item-item">
-                                <Link to="/dashboard" style={{color: "white",}}>Dashboard</Link>
+
+                            <NavItem>
+                                <NavLink><Link to="/dashboard" onClick={toggleNavbar} style={{color:"#FFBA08"}}>Dashboard</Link></NavLink>
                             </NavItem>
-                        </a>
-                        <a href="/marketing-ui" onClick={!collapsed}>
-                            <NavItem className="nav-item-item">
-                                <Link to="/marketing-ui" style={{color: "white",}}>What is 'How-To'?</Link>
+
+                            <NavItem onClick={!collapsed}>
+                                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" style={{color:"#FFBA08"}}>What is 'How-To'?</a>
                             </NavItem>
-                        </a>
-                    </div>
+                            </div>
                 </Nav>
             </Collapse>
-
         </Navbar>
     </div>
 )};
