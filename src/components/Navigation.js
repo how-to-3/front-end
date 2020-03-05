@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 import pic6v3 from '../assets/pic6v3.PNG'
 import Styled from 'styled-components';
-
+import { Link } from 'react-router-dom';
 
 const StyledAnchor = Styled.a`
 &:hover{
@@ -28,12 +28,12 @@ const Navigation = (props) => {
                 <Nav navbar>
                     <div className="nav-item-container">
                             
-                            <NavItem className="nav-item-item" onClick={!collapsed}>
-                                <NavLink href="/login">Log In / Sign Up</NavLink>
+                            <NavItem>
+                                <NavLink><Link to="/login" onClick={toggleNavbar}>Log In / Sign Up</Link></NavLink>
                             </NavItem>
 
                             <NavItem className="nav-item-item" onClick={!collapsed}>
-                                <NavLink href="/dashboard"> Dashboard </NavLink>
+                                <NavLink><Link to="/dashboard" onClick={toggleNavbar}>Dashboard</Link></NavLink>
                             </NavItem>
 
                             <NavItem className="nav-item-item" onClick={!collapsed}>
