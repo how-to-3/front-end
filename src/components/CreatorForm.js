@@ -14,8 +14,6 @@ const [newHowTo, setNewHowTo] = useState({
         score:""
 })
 
-const { register, handleSubmit, errors } = useForm()
-
 const handleChanges = e => {
         setNewHowTo({...newHowTo,[e.target.name]: e.target.value})
 }
@@ -38,7 +36,7 @@ const [isOpen, setIsOpen] = useState(false);
 const toggle = () => setIsOpen(!isOpen);
         return (
         <div className="colapse-container" style={{width:"100%", height:"100%"}}>
-        <div style={{ padding:"2% 30% 0 30%", display:"flex", flexDirection:"column", justifyContent:"center", backgroundColor:"#3E444A"}}>
+        <div style={{ padding:"2% 25% 0 25%", display:"flex", flexDirection:"column", justifyContent:"center", backgroundColor:"#3E444A"}}>
         <h3 style={{display:"flex", justifyContent:"center", margin: "0 0 5% 1%", color:"white"}}>Welcome to your Dashboard</h3>
         <Button color="dark" onClick={toggle} style={{ marginBottom: '1rem' }}>Add A How-To </Button>
         <Collapse isOpen={isOpen}>

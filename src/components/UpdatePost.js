@@ -48,7 +48,6 @@ const [howto, setHowto] = useState({
         const history = useHistory();
 
         const onSubmit = e => {
-                e.preventDefault();
                 axiosWithAuth()
                 .put(`/guides/${props.howToCard.guide_id}`, howto)
                 .then( res => {
