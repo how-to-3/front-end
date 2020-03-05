@@ -5,7 +5,21 @@ import { Spinner } from 'reactstrap';
 import UpdatePost from './UpdatePost';
 import { useHistory } from 'react-router-dom';
 import { NameContext } from '../App';
+import Styled from 'styled-components';
 
+const StyledButton = Styled.button`
+    background-color: #343A40;
+    display: flex;
+    margin: 0% 0% 0 0;
+    height: 30px;
+    width: auto;
+    border-Radius: 5px;
+    border: 1px solid black;
+    color: white;
+    &:hover{
+        background-color: #ff0c0c
+    }
+`
 
 const DashCard = (props) => {
 
@@ -43,17 +57,22 @@ const DashCard = (props) => {
 
             {
                 howToCard.guide_name ? 
-                <div style={{ backgroundColor:"#1C3144", color:"white", display:"Flex", alignItems:"center", margin:"2% 25% 2% 25%", padding:"2%", flexDirection:"column",}}>
-                    <h2> {howToCard.guide_name}</h2>
-                    <em style={{margin:".5% 0 2% 0", color:"#FFBA08"}}> {howToCard.category}</em>
-                    <p style={{fontSize:"1.25rem", margin:"5% 0% 5% 0%"}}>Description: {howToCard.description}</p>
-                    <p style={{fontSize:"1.5rem"}}>Level of Difficulty: {howToCard.score}</p>
-                    <div className="button-container">
-                        <button onClick={deleteItem} style={{margin:"10% 0 0 0", borderRadius:"5px", width:"100%",}}>Delete</button>
-                    </div>
-                    <div className="update-container" style={{width: "100%",}}>
-                        <UpdatePost howToCard={howToCard}/>
-                    </div>
+                <div style={{ backgroundColor:"#343A40", color:"white", display:"Flex", padding:"2%", flexDirection:"column", margin:"1% 25% 0 25%", borderRadius: "5px", boxShadow:"1px 1px 10px 2px #202020", }}>
+                        <div style={{display:"flex", width:"100%", justifyContent:"space-between"}}>
+                            <h2> {howToCard.guide_name}</h2>
+                            <StyledButton onClick={deleteItem}>X</StyledButton>
+                        </div>
+                        <em style={{margin:".5% 1% 2% 0%", color:"#FFBA08"}}> {howToCard.category}</em>
+                        <p style={{fontSize:"1.25rem", margin:"5% 0% 5% 0%"}}>Description: {howToCard.description}</p>
+                        
+                        <div style={{display:"flex", justifyContent:"space-between"}}>   
+                            <UpdatePost howToCard={howToCard}/>
+                            <div style={{display:"flex", flexDirection:"column", alignContent:"center"}}>
+                                <h5 style={{fontSize:"3rem", margin:"0 0 0 35px" }}>{howToCard.score}</h5>
+                                <h5 style={{fontSize:"1.5rem", fontWeight:"bold"}}>Difficulty</h5>
+                            </div>
+                        </div> 
+
                 </div>
                 : 
                 <div>

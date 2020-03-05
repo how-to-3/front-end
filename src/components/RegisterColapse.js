@@ -43,14 +43,16 @@ const RegisterColapse = (props) => {
     return (
         <div className="register-container" style={{width:"100%", height:"100%"}}>
             <div style={{padding:"1% 30% 0 30%", display:"flex", flexDirection:"column", justifyContent:"center", backgroundColor:"#3e444a"}}>
-            <Button color="dark" onClick={toggle} style={{ marginBottom: '1rem' }}>Don't have an Account?<br></br> Sign Up!</Button>
+            <div style={{display:"flex", justifyContent:"center"}}>
+            <Button color="dark" onClick={toggle} style={{ marginBottom: '1rem', }}>Don't have an Account?<br></br> Sign Up!</Button>
+            </div>
             <Collapse isOpen={isOpen}>
                 <div style={{}}>
                 <Card color="dark">
                 <div style={{}}>
                     <CardBody color="dark">
                         <div style={{margin:"0 20% 0 20%"}}>
-                <form onSubmit={handleSubmit(onSubmit)} style={{display:"flex", flexDirection:"column"}}>
+                <form onSubmit={handleSubmit(onSubmit)} style={{display:"flex", flexDirection:"column", alignContent:"center", margin:"0 0 0 0"}}>
                     
                     {/* <label style={{color:"White",}}>What's your Email Address?<br></br>(Your email be kept <span style={{textDecoration:"underline",fontWeight:"bold"}}>private</span>)</label>
                     <input
@@ -110,7 +112,7 @@ const RegisterColapse = (props) => {
                     </select>
                     <input 
                     type="text" */}
-                    <button type="submit" className="submitButton" style={{margin:"10% 0 0 0", borderRadius:"5px", width:"100%",}}>Finish</button>
+                    <button type="submit" className="submitButton" style={{margin:"10% 0 0 0", borderRadius:"5px", width:"100%"}}>Finish</button>
                 </form>
                 </div>
                     </CardBody>
