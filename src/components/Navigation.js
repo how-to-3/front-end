@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 import pic6v3 from '../assets/pic6v3.PNG'
 import Styled from 'styled-components';
-import { NavLink } from "react-router-dom";
 
 
 const StyledAnchor = Styled.a`
@@ -31,11 +29,11 @@ const Navigation = (props) => {
                     <div className="nav-item-container">
                             
                             <NavItem className="nav-item-item" onClick={!collapsed}>
-                                <NavLink tag={Link} to="/login">Log In / Sign Up</NavLink>
+                                <NavLink href="/login">Log In / Sign Up</NavLink>
                             </NavItem>
 
                             <NavItem className="nav-item-item" onClick={!collapsed}>
-                                <NavLink tag={Link} to="/dashboard"> Dashboard </NavLink>
+                                <NavLink href="/dashboard"> Dashboard </NavLink>
                             </NavItem>
 
                             <NavItem className="nav-item-item" onClick={!collapsed}>
