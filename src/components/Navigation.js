@@ -31,15 +31,15 @@ const Navigation = (props) => {
                     <div className="nav-item-container">
                             
                             <NavItem className="nav-item-item" onClick={!collapsed}>
-                                <Link to="/login" style={{color: "white",}}>Log In / Sign Up</Link>
+                                <NavLink to="/login">Log In / Sign Up</NavLink>
                             </NavItem>
 
                             <NavItem className="nav-item-item" onClick={!collapsed}>
-                                <Link to="/dashboard" style={{color: "white",}}>Dashboard</Link>
+                                <NavLink to="/dashboard">Dashboard</NavLink>
                             </NavItem>
 
                             <NavItem className="nav-item-item" onClick={!collapsed}>
-                                <a href="marketing-ui" style={{color: "white",}}>What is 'How-To'?</a>
+                                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">What is 'How-To'?</a>
                             </NavItem>
                     </div>
                 </Nav>

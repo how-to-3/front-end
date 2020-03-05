@@ -2,10 +2,6 @@
 import React, { createContext, useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-// STYLES
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
-
 // COMPONENTS 
 import Navigation from './components/Navigation';
 import Particles from './components/Particles';
@@ -15,9 +11,9 @@ import Feed from './components/Feed';
 import PrivateRoute from './components/PrivateRoute';
 import DashCard from './components/DashCard';
 
-// LAYOUY FOR ROUTES EXAMPLE
-
-
+// STYLES
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 
 
@@ -26,13 +22,24 @@ export const NameContext = createContext();
 
 const App = () => {
   
+  const initialState = {
+    guide_name:"", 
+    category:"", 
+    description:"", 
+    score:""
+  }
+
   const [howTos, setHowTos] = useState([])
-  const [newHowTo, setNewHowTo] = useState({guide_name:"", category:"", description:"", score:""})
+  const [newHowTo, setNewHowTo] = useState(initialState)
   const [howToCard, setHowToCard] = useState({guide_name:"",category:"",description:"", score:""})
+
+  const resetCard = () => {
+    setHowTos(initialState)
+  }
 
   return (
   <>
-    <NameContext.Provider value={{howTos, setHowTos, newHowTo, setNewHowTo, howToCard, setHowToCard,}}>
+    <NameContext.Provider value={{resetCard, howTos, setHowTos, newHowTo, setNewHowTo, howToCard, setHowToCard,}}>
       <div className="main-container" style={{padding:"0 0 20% 0", backgroundColor:"#3e444a"}}>
         <Navigation />
 
@@ -48,5 +55,7 @@ const App = () => {
   </>
   );
 }
+
+
 
 export default App;

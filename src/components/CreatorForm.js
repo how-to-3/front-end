@@ -8,7 +8,7 @@ import { NameContext } from '../App';
 const CreatorForm = () => {
 const { register, handleSubmit, errors } = useForm()    
 
-const { newHowTo, setNewHowTo } = useContext(NameContext);
+const { newHowTo, setNewHowTo, resetCard } = useContext(NameContext);
 
 const handleChanges = e => {
         setNewHowTo({...newHowTo,[e.target.name]: e.target.value})
@@ -28,13 +28,14 @@ const history = useHistory()
 // const submitHandler = (e) => {
 // }
 
-const onSubmit = e => {
-        setNewHowTo([newHowTo])
+const onSubmit = () => {
+        setNewHowTo(newHowTo)
         console.log("new how-to submitted :", newHowTo)
         axiosWithAuth()
         .post(`/guides`, newHowTo)
         .then( res => {
-                console.log("guide posted successfully :",res)
+                console.log("guide posted successfully :", res)
+                resetCard()
                 history.push('/')
         })
         .catch(err => {console.log("error adding new how-to", err)})
@@ -47,7 +48,7 @@ const toggle = () => setIsOpen(!isOpen);
         <div style={{ padding:"2% 25% 0 25%", display:"flex", flexDirection:"column", justifyContent:"center", backgroundColor:"#3E444A"}}>
         <div style={{display:"flex", justifyContent:"space-between"}}>
         <h3 style={{display:"flex", justifyContent:"center", margin: "0 0 1% 0%", color:"white"}}>Welcome to the<br></br> Dashboard </h3>
-            <Button color="dark" onClick={toggle} style={{ width:"20%", marginBottom: '1rem' }}>Add A How-To </Button>
+            <Button color="dark" onClick={toggle} style={{ width:"135px", marginBottom: '50px' }}>Add A How-To </Button>
         </div>
         <Collapse isOpen={isOpen}>
                 <div style={{}}>
