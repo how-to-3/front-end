@@ -22,10 +22,14 @@ const Feed = () => {
     return (
 		<>
 		{console.log("my guides: ", guides)}
-            <div className="feed-header-container" style={{color:"white", display: "flex", flexDirection:"column", alignItems: "center", margin: "2% 2% 1% 2%"}}>
-            <h1 style={{color:"white", margin: "0 0 1.5% 0"}}>How-To Feed</h1>
-			<h5 style={{color:"white",}}><Link to ="/login" style={{color:"white",}}>Log In/Register</Link> to Create a Post</h5>
-			<h6 style={{color:"white",}}><Link to ="/dashboard" style={{color:"white",}}>Go to My Dashboard</Link> (<span style={{textDecoration:"underline"}}>must</span> be logged in)</h6>
+            <div className="feed-header-container">
+            <div style={{display:"flex", justifyContent:"space-between", margin: "0% 25% 0 25%"}}>
+				<h1 style={{color:"white", margin: "3% 0 1.5% 0"}}>How-To Feed</h1>
+				<div style={{margin:"3% 0 0 0"}}>
+					<h5 style={{color:"white",}}><Link to ="/login" style={{color:"white",}}>Log In/Register</Link> to Create a Post</h5>
+					<h6 style={{color:"white",}}><Link to ="/dashboard" style={{color:"white",}}>Go to My Dashboard</Link> (<span style={{textDecoration:"underline"}}>must</span> be logged in)</h6>
+				</div>
+			</div>
 
             </div>
 			{

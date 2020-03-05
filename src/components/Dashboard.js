@@ -1,15 +1,18 @@
 import { Switch, Route } from 'react-router-dom'
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import CreatorForm from './CreatorForm';
 import UpdatePost from './UpdatePost';
 import axiosWithAuth from './axiosWithAuth';
 import HowToDetails from './HowToDetails';
 import { Spinner } from 'reactstrap'
+import { NameContext } from '../App';
+
 
 const Dashboard = () => {
 
-    const [howTos, setHowTos] = useState([])
     
+    const { howTos, setHowTos } = useContext(NameContext);
+
     useEffect(() => {
             axiosWithAuth()
             .get('/guides')

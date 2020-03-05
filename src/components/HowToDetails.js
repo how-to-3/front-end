@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom'
+import React, { useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 const HowToDetails = (props) => {
+
 console.log("props for how to detail", props)
-    return (
+    
+
+return (
         <div>
             <div style={{ backgroundColor:"#1C3144", border:"2px solid white", margin:"1% 25% 0 25%"}}>
                 <Link to = {`/guides/${props.howTo.id}`}>
