@@ -36,7 +36,7 @@ const Navigation = (props) => {
                             </NavItem>
 
                             <NavItem onClick={!collapsed}>
-                                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" style={{color:"#FFBA08"}}>What is 'How-To'?</a>
+                                <a href="https://how-to-3.github.io/marketing/" target="_blank" rel="noopener noreferrer" style={{color:"#FFBA08"}}>What is 'How-To'?</a>
                             </NavItem>
                             </div>
                 </Nav>
