@@ -43,7 +43,7 @@ const DashCard = (props) => {
 
             {
                 howToCard.guide_name ? 
-                <div style={{ backgroundColor:"#1C3144", color:"white", border:"2px solid white", display:"Flex", alignItems:"center", margin:"2% 25% 2% 25%", padding:"2%", flexDirection:"column",}}>
+                <div style={{ backgroundColor:"#1C3144", color:"white", display:"Flex", alignItems:"center", margin:"2% 25% 2% 25%", padding:"2%", flexDirection:"column",}}>
                     <h2> {howToCard.guide_name}</h2>
                     <em style={{margin:".5% 0 2% 0", color:"#FFBA08"}}> {howToCard.category}</em>
                     <p style={{fontSize:"1.25rem", margin:"5% 0% 5% 0%"}}>Description: {howToCard.description}</p>
