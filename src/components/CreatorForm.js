@@ -29,7 +29,7 @@ const onSubmit = e => {
         .post(`/guides`, newHowTo)
         .then( res => {
                 console.log("guide posted successfully :",res)
-                history.push('/dashboard')
+                history.push('/')
         })
         .catch(err => {console.log("error adding new how-to", err)})
 }

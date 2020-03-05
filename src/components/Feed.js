@@ -25,7 +25,8 @@ const Feed = () => {
             <div className="feed-header-container" style={{color:"white", display: "flex", flexDirection:"column", alignItems: "center", margin: "2% 2% 1% 2%"}}>
             <h1 style={{color:"white", margin: "0 0 1.5% 0"}}>How-To Feed</h1>
 			<h5 style={{color:"white",}}><Link to ="/login" style={{color:"white",}}>Log In/Register</Link> to Create a Post</h5>
-            </div>
+            <h6 style={{color:"white",}}><Link to ="/dashboard" style={{color:"white",}}>Go to My Dashboard</Link> (<span style={{textDecoration:"underline"}}>must</span> be logged in)</h6>
+			</div>
 			{
 			guides.length > 0 ? 
 			<FeedItem guides={guides} /> 
