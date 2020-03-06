@@ -44,7 +44,7 @@ const RegisterColapse = (props) => {
         <div className="register-container" style={{width:"100%", height:"100%"}}>
             <div style={{padding:"1% 30% 0 30%", display:"flex", flexDirection:"column", justifyContent:"center", backgroundColor:"#3e444a"}}>
             <div style={{display:"flex", justifyContent:"center"}}>
-            <Button color="dark" onClick={toggle} style={{ marginBottom: '1rem', }}>Don't have an Account?<br></br> Sign Up!</Button>
+            <Button color="dark" onClick={toggle} style={{ marginBottom: '1rem', width:"250px" }}>Don't have an Account?<br></br> Sign Up!</Button>
             </div>
             <Collapse isOpen={isOpen}>
                 <div style={{}}>
@@ -52,7 +52,7 @@ const RegisterColapse = (props) => {
                 <div style={{}}>
                     <CardBody color="dark">
                         <div style={{margin:"0 20% 0 20%"}}>
-                <form onSubmit={handleSubmit(onSubmit)} style={{display:"flex", flexDirection:"column", alignContent:"center", margin:"0 0 0 0"}}>
+                <form onSubmit={handleSubmit(onSubmit)} style={{display:"flex", flexDirection:"column", alignContent:"center", margin:"0 0 0 50px"}}>
                     
                     {/* <label style={{color:"White",}}>What's your Email Address?<br></br>(Your email be kept <span style={{textDecoration:"underline",fontWeight:"bold"}}>private</span>)</label>
                     <input

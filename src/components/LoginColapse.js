@@ -50,7 +50,7 @@ const LoginColapse = (props) => {
 
             </div>
             <div style={{display:"flex", justifyContent:"center", justifyItems:"center"}}>
-            <Button color="dark" onClick={toggle} style={{marginBottom: '1rem', display:"flex", width:"195px", justifyContent:"center"}}>Log In</Button>
+            <Button color="dark" onClick={toggle} style={{marginBottom: '1rem', display:"flex", width:"250px", justifyContent:"center"}}>Log In</Button>
             </div>
             <Collapse isOpen={isOpen}>
                 <div style={{}}>
@@ -58,7 +58,7 @@ const LoginColapse = (props) => {
                 <div style={{}}>
                     <CardBody color="dark">
                         <div style={{margin:"0 20% 0 20%"}}>
-                <form onSubmit={handleSubmit(onSubmit)} style={{display:"flex", flexDirection:"column", alignContent:"center"}}>
+                <form onSubmit={handleSubmit(onSubmit)} style={{display:"flex", flexDirection:"column", alignContent:"center", margin:"0 0 0 50px"}}>
                     <label style={{color:"White",}}>Username</label>
                     <input
                     name="username"
