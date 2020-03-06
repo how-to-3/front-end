@@ -40,9 +40,12 @@ const onSubmit = () => {
         .post(`/guides`, newHowTo)
         .then( res => {
                 console.log("guide posted successfully :", res)
-                fileSubmitHandler(res.data.newGuide.guide_id)
-                // resetCard()
-                // history.push('/')
+                if(selectedFile.length > 0){
+                        fileSubmitHandler(res.data.newGuide.guide_id)
+                } else {
+                        resetCard()
+                        history.push('/')
+                }
         })
         .catch(err => {console.log("error adding new how-to", err)})
 }

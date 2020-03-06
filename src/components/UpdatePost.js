@@ -51,8 +51,11 @@ const UpdatePost = props => {
                 .put(`/guides/${props.howToCard.guide_id}`, howto)
                 .then( res => {
                         console.log("update response :", res)
-                        fileSubmitHandler(props.howToCard.guide_id)
-                        // history.push('/dashboard')
+                        if(selectedFile.length > 0){
+                                fileSubmitHandler(props.howToCard.guide_id)
+                        } else {
+                                history.push('/dashboard')
+                        }
                 })
                 .catch(error => {console.log("error updating :", error)})
         }
@@ -133,7 +136,7 @@ const UpdatePost = props => {
                 </form>
                 </div>
                 </CardBody>
-                </div>
+                </div> 
                 </Card>
                 </div>
         </Collapse>
